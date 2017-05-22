@@ -17,5 +17,6 @@ expect {
   -re ".*sword.*" {exp_send "$password\r"; exp_continue }
   eof
    }
+puts "\n** RHTools -> done."
 EOF
 

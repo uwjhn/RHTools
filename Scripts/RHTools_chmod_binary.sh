@@ -9,9 +9,9 @@ binary_name="rPI_Operator"
 
 /usr/bin/expect << EOF
 
-puts "\n** RHTools -> KILL BINARY ACTIVITIES" 
+puts "\n** RHTools -> MAKE BINARY EXECUTEABLE" 
 
-spawn ssh ${userid}@$ip pkill $binary_name
+spawn ssh ${userid}@$ip chmod +x $binary_name
 expect {
   -re ".*es.*o.*" {exp_send "yes\r"; exp_continue }
   -re ".*sword.*" {exp_send "$password\r"; exp_continue }
