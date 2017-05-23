@@ -1,11 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-# inputs
-ip="192.168.1.121"
-userid="pi"
-password="raspberry"
-path_to_binary="/home/uwlau/DAEbot/Devices/rPI_Operator/Source/rPI_Operator/Debug"
-binary_name="rPI_Operator"
+#Source config file from argument
+echo  "** RHTools -> Using Config: $1"
+source $1
 
 /usr/bin/expect << EOF
 
