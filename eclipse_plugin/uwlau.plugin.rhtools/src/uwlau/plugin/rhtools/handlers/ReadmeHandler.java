@@ -8,14 +8,15 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 public class ReadmeHandler extends AbstractHandler {
-	
+
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
+
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		MessageDialog.openInformation(
-				window.getShell(),
-				"RHTools",
-				"RHTools -> ** Readme");
+		MessageDialog.openInformation(window.getShell(), "RHTools",
+				"RHTools  ©uwlau \nhttps://github.com/uwlau/RHTools");
+				//"RHTools  ©uwlau \n<a href=\"https://github.com/uwlau/RHTools\">https://github.com/uwlau/RHTools</a>");
+
 		return null;
 	}
 }
