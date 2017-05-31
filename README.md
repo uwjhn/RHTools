@@ -1,4 +1,9 @@
 # RHTools
-Remote Hardware Tools [RHTOOLS v0.001a]
+Remote Hardware Tools [RHTOOLS v0.002a]
 
-Use: ./srciptname.sh config-name.cfg
+### Scripts
+Use: `./srciptname.sh config-name.cfg` 
+
+### Eclipse Plugin
+todo
+
