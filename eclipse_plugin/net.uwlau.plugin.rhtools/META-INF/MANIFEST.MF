@@ -6,3 +6,5 @@ Bundle-Version: 0.0.1.qualifier
 Bundle-Vendor: uwlau
 Require-Bundle: org.eclipse.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: lib/jsch-0.1.54.jar,
+ .

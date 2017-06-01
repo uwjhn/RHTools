@@ -8,6 +8,13 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 public class ConfigHandler extends AbstractHandler {
+	
+	
+	public static String host = "192.168.1.121";
+	public static int port = 22;
+	public static String user = "pi";
+	public static String passwd = "raspberry";
+	public static String command = "set|grep SSH";
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
