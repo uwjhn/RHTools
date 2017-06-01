@@ -104,5 +104,8 @@
          </toolbar>
       </menuContribution>
    </extension>
+   <extension
+         point="org.eclipse.ui.console.consoleFactories">
+   </extension>
 
 </plugin>

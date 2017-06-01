@@ -4,7 +4,8 @@ Bundle-Name: RHTools
 Bundle-SymbolicName: net.uwlau.plugin.rhtools;singleton:=true
 Bundle-Version: 0.0.1.qualifier
 Bundle-Vendor: uwlau
-Require-Bundle: org.eclipse.ui
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.ui.console;bundle-version="3.6.201"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: lib/jsch-0.1.54.jar,
  .

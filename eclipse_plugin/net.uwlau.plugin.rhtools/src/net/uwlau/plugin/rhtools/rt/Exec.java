@@ -2,12 +2,11 @@ package net.uwlau.plugin.rhtools.rt;
 
 import com.jcraft.jsch.*;
 import java.io.*;
+import org.eclipse.ui.console.*;
 
 public class Exec {
-	
-	public static void ssh_exec()
-	{
-	
+
+	public static void rt_run() {
 
 		try {
 			JSch jsch = new JSch();
@@ -22,8 +21,43 @@ public class Exec {
 			session.setPassword(net.uwlau.plugin.rhtools.handlers.ConfigHandler.passwd);
 			session.connect();
 
+			// console out in target ide
+			MessageConsole myConsole = net.uwlau.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
+			MessageConsoleStream out = myConsole.newMessageStream();
+			out.println("*RHTOOLS -> Starting SSH/SCP Tasks");
+			
+			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_kill) {
+				out.println("*RHTOOLS -> Kill binary activities");
+				ssh_exec(session, "kill -9 $(pidof " + net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name + ")");
+			}
+			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_scp) {
+				out.println("*RHTOOLS -> Copy binary to remote hardware");
+				ssh_exec(session, "echo scp todo");
+			} 
+			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_chmod) {
+				out.println("*RHTOOLS -> Make binary executeable");
+				ssh_exec(session,  "chmod +x " + net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name);
+			}
+			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_exec) {
+				out.println("*RHTOOLS -> Run binary");
+				ssh_exec(session, "./" + net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name);
+			}
+
+			out.println("*RHTOOLS -> SSH/SCP Tasks done.");
+			session.disconnect();
+
+		} catch (Exception e) {
+			System.out.println(e);
+
+		}
+
+	}
+
+	public static void ssh_exec(Session session, String cmd) {
+
+		try {
 			Channel channel = session.openChannel("exec");
-			((ChannelExec) channel).setCommand(net.uwlau.plugin.rhtools.handlers.ConfigHandler.command);
+			((ChannelExec) channel).setCommand(cmd);
 
 			// channel.setInputStream(System.in);
 			channel.setInputStream(null);
@@ -49,7 +83,7 @@ public class Exec {
 				if (channel.isClosed()) {
 					if (in.available() > 0)
 						continue;
-					System.out.println("exit-status: " + channel.getExitStatus());
+					System.out.println("*RHTOOLS --> SSH/SCP COMMAND DONE");
 					break;
 				}
 				try {
@@ -58,11 +92,14 @@ public class Exec {
 				}
 			}
 			channel.disconnect();
-			session.disconnect();
-		} catch (Exception e) {
+
+		}
+
+		catch (Exception e) {
 			System.out.println(e);
 
 		}
-	}
-}
 
+	}
+	
+}

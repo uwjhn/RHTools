@@ -13,7 +13,7 @@ public class RunHandler extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		net.uwlau.plugin.rhtools.rt.Exec.ssh_exec();
+		net.uwlau.plugin.rhtools.rt.Exec.rt_run();
 		return null;
 	}
 }

@@ -14,8 +14,14 @@ public class ConfigHandler extends AbstractHandler {
 	public static int port = 22;
 	public static String user = "pi";
 	public static String passwd = "raspberry";
-	public static String command = "set|grep SSH";
-
+	public static String binary_name = "rPI_Operator";
+	public static String path_to_binary = "../../";
+	
+	public static boolean flag_kill = true;
+	public static boolean flag_scp = true;
+	public static boolean flag_chmod = true;
+	public static boolean flag_exec = false;
+	
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
