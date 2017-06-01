@@ -1,22 +1,27 @@
-package uwlau.plugin.rhtools.handlers;
+package net.uwlau.plugin.rhtools.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.eclipse.jface.dialogs.MessageDialog;
 
-public class ReadmeHandler extends AbstractHandler {
+/**
+ * Our sample handler extends AbstractHandler, an IHandler base class.
+ * @see org.eclipse.core.commands.IHandler
+ * @see org.eclipse.core.commands.AbstractHandler
+ */
+public class RunHandler extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		MessageDialog.openInformation(window.getShell(), "RHTools",
-				"RHTools  ©uwlau \nhttps://github.com/uwlau/RHTools");
-				//"RHTools  ©uwlau \n<a href=\"https://github.com/uwlau/RHTools\">https://github.com/uwlau/RHTools</a>");
-
+		MessageDialog.openInformation(
+				window.getShell(),
+				"RHTools",
+				"RHTools -> ** Run RHTools");
 		return null;
 	}
 }
+

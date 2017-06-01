@@ -1,18 +1,13 @@
-package uwlau.plugin.rhtools.handlers;
+package net.uwlau.plugin.rhtools.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.eclipse.jface.dialogs.MessageDialog;
 
-/**
- * Our sample handler extends AbstractHandler, an IHandler base class.
- * @see org.eclipse.core.commands.IHandler
- * @see org.eclipse.core.commands.AbstractHandler
- */
-public class RunHandler extends AbstractHandler {
+public class ConfigHandler extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -20,8 +15,7 @@ public class RunHandler extends AbstractHandler {
 		MessageDialog.openInformation(
 				window.getShell(),
 				"RHTools",
-				"RHTools -> ** Run RHTools");
+				"RHTools -> ** Config");
 		return null;
 	}
 }
-

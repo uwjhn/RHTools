@@ -6,49 +6,49 @@
          point="org.eclipse.ui.commands">
       <category
             name="RHTCategory"
-            id="uwlau.plugin.rhtools.rhtoolsCommand.category">
+            id="net.uwlau.plugin.rhtools.rhtoolsCommand.category">
       </category>
       <command
             name="Run"
-            categoryId="uwlau.plugin.rhtools.rhtoolsCommand.category"
-            id="uwlau.plugin.rhtools.commands.rhtoolsRunCommand">
+            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
+            id="net.uwlau.plugin.rhtools.commands.rhtoolsRunCommand">
       </command>
       <command
-            categoryId="uwlau.plugin.rhtools.rhtoolsCommand.category"
-            id="uwlau.plugin.rhtools.commands.rhtoolsConfigCommand"
+            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
+            id="net.uwlau.plugin.rhtools.commands.rhtoolsConfigCommand"
             name="Configuration">
       </command>
       <command
-            categoryId="uwlau.plugin.rhtools.rhtoolsCommand.category"
-            id="uwlau.plugin.rhtools.commands.rhtoolsReadmeCommand"
+            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
+            id="net.uwlau.plugin.rhtools.commands.rhtoolsReadmeCommand"
             name="Readme ">
       </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            commandId="uwlau.plugin.rhtools.commands.rhtoolsRunCommand"
-            class="uwlau.plugin.rhtools.handlers.RunHandler">
+            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsRunCommand"
+            class="net.uwlau.plugin.rhtools.handlers.RunHandler">
       </handler>
       <handler
-            class="uwlau.plugin.rhtools.handlers.ConfigHandler"
-            commandId="uwlau.plugin.rhtools.commands.rhtoolsConfigCommand">
+            class="net.uwlau.plugin.rhtools.handlers.ConfigHandler"
+            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsConfigCommand">
       </handler>
       <handler
-            class="uwlau.plugin.rhtools.handlers.ReadmeHandler"
-            commandId="uwlau.plugin.rhtools.commands.rhtoolsReadmeCommand">
+            class="net.uwlau.plugin.rhtools.handlers.ReadmeHandler"
+            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsReadmeCommand">
       </handler>
    </extension>
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandId="uwlau.plugin.rhtools.commands.rhtoolsRunCommand"
+            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsRunCommand"
             contextId="org.eclipse.ui.contexts.window"
             sequence="M1+6"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </key>
       <key
-            commandId="uwlau.plugin.rhtools.commands.rhtoolsConfigCommand"
+            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsConfigCommand"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+7">
@@ -59,27 +59,27 @@
       <menuContribution
             locationURI="menu:org.eclipse.ui.main.menu?after=additions">
          <menu
-               id="uwlau.plugin.rhtools.menus.rhtools"
+               id="net.uwlau.plugin.rhtools.menus.rhtools"
                label="RHTools"
                mnemonic="M">
             <command
-                  commandId="uwlau.plugin.rhtools.commands.rhtoolsRunCommand"
+                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsRunCommand"
                   icon="icons/run.gif"
-                  id="uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
                   label="Run..."
                   mnemonic="S">
             </command>
             <command
-                  commandId="uwlau.plugin.rhtools.commands.rhtoolsConfigCommand"
+                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsConfigCommand"
                   icon="icons/config.gif"
-                  id="uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
                   label="Configurations"
                   mnemonic="S">
             </command>
             <command
-                  commandId="uwlau.plugin.rhtools.commands.rhtoolsReadmeCommand"
+                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsReadmeCommand"
                   icon="icons/info.gif"
-                  id="uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
                   label="Readme"
                   mnemonic="S">
             </command>
@@ -88,17 +88,17 @@
       <menuContribution
             locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
          <toolbar
-               id="uwlau.plugin.rhtools.toolbars.rhtoolsToolbar">
+               id="net.uwlau.plugin.rhtools.toolbars.rhtoolsToolbar">
             <command
-                  commandId="uwlau.plugin.rhtools.commands.rhtoolsRunCommand"
+                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsRunCommand"
                   icon="icons/run.gif"
                   tooltip="RHTools *RUN"
-                  id="uwlau.plugin.rhtools.toolbars.run">
+                  id="net.uwlau.plugin.rhtools.toolbars.run">
             </command>
             <command
-                  commandId="uwlau.plugin.rhtools.commands.rhtoolsConfigCommand"
+                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsConfigCommand"
                   icon="icons/config.gif"
-                  id="uwlau.plugin.rhtools.toolbars.config"
+                  id="net.uwlau.plugin.rhtools.toolbars.config"
                   tooltip="RHTools *CONFIG">
             </command>
          </toolbar>
