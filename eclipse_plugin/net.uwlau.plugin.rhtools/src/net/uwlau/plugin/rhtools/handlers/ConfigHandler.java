@@ -21,6 +21,7 @@ public class ConfigHandler extends AbstractHandler {
 	public static boolean flag_scp = true;
 	public static boolean flag_chmod = true;
 	public static boolean flag_exec = false;
+	public static boolean flag_shutdown = false; //todo: add extra menu for this. 
 	
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {

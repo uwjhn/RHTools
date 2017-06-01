@@ -25,22 +25,27 @@ public class Exec {
 			MessageConsole myConsole = net.uwlau.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
 			out.println("*RHTOOLS -> Starting SSH/SCP Tasks");
-			
+
 			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_kill) {
 				out.println("*RHTOOLS -> Kill binary activities");
-				ssh_exec(session, "kill -9 $(pidof " + net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name + ")");
+				ssh_exec(session,
+						"kill -9 $(pidof " + net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name + ")");
 			}
 			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_scp) {
 				out.println("*RHTOOLS -> Copy binary to remote hardware");
 				ssh_exec(session, "echo scp todo");
-			} 
+			}
 			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_chmod) {
 				out.println("*RHTOOLS -> Make binary executeable");
-				ssh_exec(session,  "chmod +x " + net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name);
+				ssh_exec(session, "chmod +x " + net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name);
 			}
 			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_exec) {
 				out.println("*RHTOOLS -> Run binary");
 				ssh_exec(session, "./" + net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name);
+			}
+			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_shutdown) {
+				out.println("*RHTOOLS -> Shutdown device");
+				ssh_exec(session, "sudo shutdown -h now");
 			}
 
 			out.println("*RHTOOLS -> SSH/SCP Tasks done.");
@@ -101,5 +106,5 @@ public class Exec {
 		}
 
 	}
-	
+
 }
