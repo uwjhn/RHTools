@@ -15,8 +15,8 @@ public class ConfigHandler extends AbstractHandler {
 	public static String user = "pi";
 	public static String passwd = "raspberry";
 	public static String binary_name = "rPI_Operator";
-	public static String path_to_binary = "../../";
-	public static String custom_cmd = "pwd";
+	public static String path_to_binary = "/home/uwlau/DAEbot/Devices/rPI_Operator/Source/rPI_Operator/Debug/";
+	public static String custom_cmd = "";
 
 	
 	public static boolean flag_kill = true;

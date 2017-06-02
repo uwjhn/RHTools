@@ -15,8 +15,6 @@ public class AboutHandler extends AbstractHandler {
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 		MessageDialog.openInformation(window.getShell(), "RHTools",
 				"RHTools  ©uwlau \nhttps://github.com/uwlau/RHTools");
-				//"RHTools  ©uwlau \n<a href=\"https://github.com/uwlau/RHTools\">https://github.com/uwlau/RHTools</a>");
-
 		return null;
 	}
 }

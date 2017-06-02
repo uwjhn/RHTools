@@ -25,12 +25,21 @@ public class CustomNowHandler extends AbstractHandler {
 		net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_exec = false;
 		net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_custom = true;
 		
-		// open window
+		
+		// open window to get the custom command
+		net.uwlau.plugin.rhtools.handlers.ConfigHandler.custom_cmd = "set|grep SSH";
+
+// ---------------------------------------------------------------------------------------
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 		MessageDialog.openInformation(window.getShell(), "RHTools",
-				"Custom CMD todo");
+				"todo");
 
-		// run
+		
+		// -----------------------------------------------------------------------------------
+		
+		
+
+		// run with custom command
 		net.uwlau.plugin.rhtools.rt.Exec.rt_run();
 		
 		// restore config flags
