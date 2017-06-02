@@ -5,8 +5,9 @@ import java.io.*;
 import org.eclipse.ui.console.*;
 import org.eclipse.ui.PlatformUI;
 
-
 public class Exec {
+
+	public static boolean output = true;
 
 	public static void rt_run() {
 
@@ -26,18 +27,18 @@ public class Exec {
 
 			MessageConsole myConsole = net.uwlau.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
-			out.println("*RHTOOLS -> Starting RHTool Task(s)");
+			out.println("\n*RHTOOLS -> Starting RHTool Task(s)");
 
 			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_kill) {
-				out.println("*RHTOOLS -> Kill binary activities");
+				out.println("*RHTOOLS --> Kill binary activities");
 				ssh_exec(session,
 						"kill -9 $(pidof " + net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name + ")");
 			}
 			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_scp) {
 				// save project files
-				PlatformUI.getWorkbench().saveAllEditors(false);   
+				PlatformUI.getWorkbench().saveAllEditors(false);
 				// build project
-				
+
 				out.println("*RHTOOLS --> Copy binary to remote hardware");
 				scp(session);
 			}
@@ -47,7 +48,9 @@ public class Exec {
 			}
 			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_exec) {
 				out.println("*RHTOOLS --> Run binary");
-				ssh_exec(session, "./" + net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name);
+				output = false; // avoids hanging the IDE
+				ssh_exec(session, "nohup ./" + net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name);
+				output = true;
 			}
 			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_shutdown) {
 				out.println("*RHTOOLS --> Shutdown device");
@@ -93,28 +96,31 @@ public class Exec {
 			MessageConsole myConsole = net.uwlau.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
 
-			byte[] tmp = new byte[1024];
-			while (true) {
-				while (in.available() > 0) {
-					int i = in.read(tmp, 0, 1024);
-					if (i < 0)
-						break;
-					out.println(new String(tmp, 0, i));
-				}
-				if (channel.isClosed()) {
-					if (in.available() > 0)
-						continue;
-					if (channel.getExitStatus() == 0) {
-						out.println("*RHTOOLS --> SSH Command finished");
-					} else {
+			if (output) {
 
-						out.println("*RHTOOLS SSH-ERROR: exit-status " + channel.getExitStatus());
+				byte[] tmp = new byte[1024];
+				while (true) {
+					while (in.available() > 0) {
+						int i = in.read(tmp, 0, 1024);
+						if (i < 0)
+							break;
+						out.println(new String(tmp, 0, i));
 					}
-					break;
-				}
-				try {
-					Thread.sleep(1000);
-				} catch (Exception ee) {
+					if (channel.isClosed()) {
+						if (in.available() > 0)
+							continue;
+						if (channel.getExitStatus() == 0) {
+							out.println("*RHTOOLS ---> SSH Command finished");
+						} else {
+
+							out.println("*RHTOOLS SSH-ERROR: exit-status " + channel.getExitStatus());
+						}
+						break;
+					}
+					try {
+						Thread.sleep(1000);
+					} catch (Exception ee) {
+					}
 				}
 			}
 			channel.disconnect();
@@ -191,7 +197,7 @@ public class Exec {
 
 			MessageConsole myConsole = net.uwlau.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
-			out.println("*RHTOOLS --> SCP Command finished");
+			out.println("*RHTOOLS ---> SCP Command finished");
 
 			channel.disconnect();
 

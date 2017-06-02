@@ -22,7 +22,7 @@ public class ConfigHandler extends AbstractHandler {
 	public static boolean flag_kill = true;
 	public static boolean flag_scp = true;
 	public static boolean flag_chmod = true;
-	public static boolean flag_exec = false;
+	public static boolean flag_exec = true;
 	public static boolean flag_shutdown = false; //always false in config
 	public static boolean flag_reboot = false; //always false in config
 	public static boolean flag_custom = false; //always false in config
