@@ -20,8 +20,38 @@
       </command>
       <command
             categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
-            id="net.uwlau.plugin.rhtools.commands.rhtoolsReadmeCommand"
-            name="Readme ">
+            id="net.uwlau.plugin.rhtools.commands.rhtoolsAboutCommand"
+            name="About">
+      </command>
+      <command
+            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
+            id="net.uwlau.plugin.rhtools.commands.rhtoolsExecNowCommand"
+            name="exec_now">
+      </command>
+      <command
+            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
+            id="net.uwlau.plugin.rhtools.commands.rhtoolsKillNowCommand"
+            name="kill_now">
+      </command>
+      <command
+            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
+            id="net.uwlau.plugin.rhtools.commands.rhtoolsRebootNowCommand"
+            name="RebootNow">
+      </command>
+      <command
+            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
+            id="net.uwlau.plugin.rhtools.commands.rhtoolsCopyNowCommand"
+            name="CopyNow">
+      </command>
+      <command
+            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
+            id="net.uwlau.plugin.rhtools.commands.rhtoolsShutdownNowCommand"
+            name="ShutdownNow">
+      </command>
+      <command
+            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
+            id="net.uwlau.plugin.rhtools.commands.rhtoolsCustomNowCommand"
+            name="CustomNow">
       </command>
    </extension>
    <extension
@@ -35,8 +65,32 @@
             commandId="net.uwlau.plugin.rhtools.commands.rhtoolsConfigCommand">
       </handler>
       <handler
-            class="net.uwlau.plugin.rhtools.handlers.ReadmeHandler"
-            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsReadmeCommand">
+            class="net.uwlau.plugin.rhtools.handlers.AboutHandler"
+            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsAboutCommand">
+      </handler>
+      <handler
+            class="net.uwlau.plugin.rhtools.handlers.CopyNowHandler"
+            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsCopyNowCommand">
+      </handler>
+      <handler
+            class="net.uwlau.plugin.rhtools.handlers.ExecNowHandler"
+            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsExecNowCommand">
+      </handler>
+      <handler
+            class="net.uwlau.plugin.rhtools.handlers.KillNowHandler"
+            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsKillNowCommand">
+      </handler>
+      <handler
+            class="net.uwlau.plugin.rhtools.handlers.ShutdownNowHandler"
+            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsShutdownNowCommand">
+      </handler>
+      <handler
+            class="net.uwlau.plugin.rhtools.handlers.RebootNowHandler"
+            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsRebootNowCommand">
+      </handler>
+      <handler
+            class="net.uwlau.plugin.rhtools.handlers.CustomNowHandler"
+            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsCustomNowCommand">
       </handler>
    </extension>
    <extension
@@ -77,10 +131,46 @@
                   mnemonic="S">
             </command>
             <command
-                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsReadmeCommand"
+                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsAboutCommand"
                   icon="icons/info.gif"
                   id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
-                  label="Readme"
+                  label="About"
+                  mnemonic="S">
+            </command>
+            <command
+                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsCopyNowCommand"
+                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  label="Copy Binary"
+                  mnemonic="S">
+            </command>
+            <command
+                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsExecNowCommand"
+                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  label="Exec Binary"
+                  mnemonic="S">
+            </command>
+            <command
+                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsKillNowCommand"
+                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  label="Kill Binary"
+                  mnemonic="S">
+            </command>
+            <command
+                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsCustomNowCommand"
+                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  label="Custom Command"
+                  mnemonic="S">
+            </command>
+            <command
+                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsShutdownNowCommand"
+                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  label="Shutdown Device"
+                  mnemonic="S">
+            </command>
+            <command
+                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsRebootNowCommand"
+                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  label="Reboot Device"
                   mnemonic="S">
             </command>
          </menu>
@@ -103,9 +193,6 @@
             </command>
          </toolbar>
       </menuContribution>
-   </extension>
-   <extension
-         point="org.eclipse.ui.console.consoleFactories">
    </extension>
 
 </plugin>

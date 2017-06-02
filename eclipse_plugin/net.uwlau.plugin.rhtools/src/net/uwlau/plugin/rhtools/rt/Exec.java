@@ -21,10 +21,10 @@ public class Exec {
 			session.setPassword(net.uwlau.plugin.rhtools.handlers.ConfigHandler.passwd);
 			session.connect();
 
-			// console out in target ide
+			// console out in target IDE
 			MessageConsole myConsole = net.uwlau.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
-			out.println("*RHTOOLS -> Starting SSH/SCP Tasks");
+			out.println("*RHTOOLS -> Starting SSH/SCP Task(s)");
 
 			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_kill) {
 				out.println("*RHTOOLS -> Kill binary activities");
@@ -47,13 +47,24 @@ public class Exec {
 				out.println("*RHTOOLS -> Shutdown device");
 				ssh_exec(session, "sudo shutdown -h now");
 			}
+			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_reboot) {
+				out.println("*RHTOOLS -> Reboot device");
+				ssh_exec(session, "sudo reboot");
+			}
+			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_custom) {
+				out.println("*RHTOOLS -> " + net.uwlau.plugin.rhtools.handlers.ConfigHandler.custom_cmd);
+				ssh_exec(session, net.uwlau.plugin.rhtools.handlers.ConfigHandler.custom_cmd);
+			}
 
 			out.println("*RHTOOLS -> SSH/SCP Tasks done.");
 			session.disconnect();
 
 		} catch (Exception e) {
 			System.out.println(e);
-
+			// console out in target IDE
+			MessageConsole myConsole = net.uwlau.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
+			MessageConsoleStream out = myConsole.newMessageStream();
+			out.println("*RHTOOLS ERROR-> No route to host");
 		}
 
 	}
