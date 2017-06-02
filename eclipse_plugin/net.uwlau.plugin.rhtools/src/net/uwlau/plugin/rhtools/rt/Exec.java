@@ -87,6 +87,10 @@ public class Exec {
 			InputStream in = channel.getInputStream();
 
 			channel.connect();
+			
+			// for target IDE console out
+			MessageConsole myConsole = net.uwlau.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
+			MessageConsoleStream out = myConsole.newMessageStream();
 
 			byte[] tmp = new byte[1024];
 			while (true) {
@@ -95,11 +99,13 @@ public class Exec {
 					if (i < 0)
 						break;
 					System.out.print(new String(tmp, 0, i));
+					out.println(new String(tmp, 0, i));
 				}
 				if (channel.isClosed()) {
 					if (in.available() > 0)
 						continue;
 					System.out.println("exit-status: " + channel.getExitStatus());
+					out.println("exit-status: " + channel.getExitStatus());
 					break;
 				}
 				try {
