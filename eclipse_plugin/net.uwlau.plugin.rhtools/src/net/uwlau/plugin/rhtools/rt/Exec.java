@@ -3,6 +3,8 @@ package net.uwlau.plugin.rhtools.rt;
 import com.jcraft.jsch.*;
 import java.io.*;
 import org.eclipse.ui.console.*;
+import org.eclipse.ui.PlatformUI;
+
 
 public class Exec {
 
@@ -10,11 +12,6 @@ public class Exec {
 
 		try {
 
-			// save project files
-
-			// build project
-
-			// ssh/scp commands
 			JSch jsch = new JSch();
 
 			Session session = jsch.getSession(net.uwlau.plugin.rhtools.handlers.ConfigHandler.user,
@@ -37,6 +34,10 @@ public class Exec {
 						"kill -9 $(pidof " + net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name + ")");
 			}
 			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_scp) {
+				// save project files
+				PlatformUI.getWorkbench().saveAllEditors(true);   
+				// build project
+				
 				out.println("*RHTOOLS --> Copy binary to remote hardware");
 				scp(session);
 			}

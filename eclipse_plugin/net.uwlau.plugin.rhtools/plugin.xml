@@ -171,6 +171,7 @@
             <command
                   commandId="net.uwlau.plugin.rhtools.commands.rhtoolsRebootNowCommand"
                   id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  label="Reboot Device"
                   mnemonic="S">
             </command>
             <separator
