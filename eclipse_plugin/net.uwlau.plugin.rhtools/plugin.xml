@@ -130,13 +130,10 @@
                   label="Configurations"
                   mnemonic="S">
             </command>
-            <command
-                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsAboutCommand"
-                  icon="icons/info.gif"
-                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
-                  label="About"
-                  mnemonic="S">
-            </command>
+            <separator
+       			name="separator-id"
+       			visible="true">
+			</separator>
             <command
                   commandId="net.uwlau.plugin.rhtools.commands.rhtoolsCopyNowCommand"
                   id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
@@ -161,6 +158,10 @@
                   label="Custom Command"
                   mnemonic="S">
             </command>
+            <separator
+                  name="separator-id2"
+                  visible="true">
+            </separator>
             <command
                   commandId="net.uwlau.plugin.rhtools.commands.rhtoolsShutdownNowCommand"
                   id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
@@ -170,7 +171,17 @@
             <command
                   commandId="net.uwlau.plugin.rhtools.commands.rhtoolsRebootNowCommand"
                   id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
-                  label="Reboot Device"
+                  mnemonic="S">
+            </command>
+            <separator
+                  name="separator-id3"
+                  visible="true">
+            </separator>
+             <command
+                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsAboutCommand"
+                  icon="icons/info.gif"
+                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  label="About"
                   mnemonic="S">
             </command>
          </menu>
