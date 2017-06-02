@@ -4,6 +4,8 @@ import com.jcraft.jsch.*;
 import java.io.*;
 import org.eclipse.ui.console.*;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.core.resources.*;
+
 
 public class Exec {
 
@@ -35,10 +37,12 @@ public class Exec {
 						"kill -9 $(pidof " + net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name + ")");
 			}
 			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_scp) {
+				out.println("*RHTOOLS --> Save & Build Project");
 				// save project files
 				PlatformUI.getWorkbench().saveAllEditors(false);
 				// build project
-
+				
+				
 				out.println("*RHTOOLS --> Copy binary to remote hardware");
 				scp(session);
 			}
@@ -245,4 +249,5 @@ public class Exec {
 		}
 		return b;
 	}
+	
 }

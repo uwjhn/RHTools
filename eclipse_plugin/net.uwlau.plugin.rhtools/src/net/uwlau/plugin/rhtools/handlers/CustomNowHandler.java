@@ -3,45 +3,36 @@ package net.uwlau.plugin.rhtools.handlers;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.handlers.HandlerUtil;
 
 public class CustomNowHandler extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		
-		// store config flags 
+
+		// store config flags
 		boolean flag_kill_tmp = net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_kill;
-		boolean flag_scp_tmp = net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_scp;;
-		boolean flag_chmod_tmp = net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_chmod;;
-		boolean flag_exec_tmp = net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_exec;;
-		
-		
+		boolean flag_scp_tmp = net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_scp;
+		;
+		boolean flag_chmod_tmp = net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_chmod;
+		;
+		boolean flag_exec_tmp = net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_exec;
+		;
+
 		net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_kill = false;
 		net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_scp = false;
 		net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_chmod = false;
 		net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_exec = false;
 		net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_custom = true;
-		
-		
+
 		// open window to get the custom command
-		net.uwlau.plugin.rhtools.handlers.ConfigHandler.custom_cmd = "set|grep SSH";
-
-// ---------------------------------------------------------------------------------------
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		MessageDialog.openInformation(window.getShell(), "RHTools",
-				"todo");
-
-		
-		// -----------------------------------------------------------------------------------
-		
-		
+		net.uwlau.plugin.rhtools.rt.Dialog_CustomCMD dialog = new net.uwlau.plugin.rhtools.rt.Dialog_CustomCMD(null);
+		dialog.create();
+		dialog.open();
+		net.uwlau.plugin.rhtools.handlers.ConfigHandler.custom_cmd=dialog.getCMD();
 
 		// run with custom command
 		net.uwlau.plugin.rhtools.rt.Exec.rt_run();
-		
+
 		// restore config flags
 		net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_kill = flag_kill_tmp;
 		net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_scp = flag_scp_tmp;
@@ -51,4 +42,5 @@ public class CustomNowHandler extends AbstractHandler {
 
 		return null;
 	}
+
 }
