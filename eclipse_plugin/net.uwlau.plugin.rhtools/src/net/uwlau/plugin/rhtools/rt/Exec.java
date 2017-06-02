@@ -35,7 +35,7 @@ public class Exec {
 			}
 			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_scp) {
 				// save project files
-				PlatformUI.getWorkbench().saveAllEditors(true);   
+				PlatformUI.getWorkbench().saveAllEditors(false);   
 				// build project
 				
 				out.println("*RHTOOLS --> Copy binary to remote hardware");
