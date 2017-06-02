@@ -11,12 +11,9 @@ public class CustomNowHandler extends AbstractHandler {
 
 		// store config flags
 		boolean flag_kill_tmp = net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_kill;
-		boolean flag_scp_tmp = net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_scp;
-		;
-		boolean flag_chmod_tmp = net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_chmod;
-		;
-		boolean flag_exec_tmp = net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_exec;
-		;
+		boolean flag_scp_tmp = net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_scp;;
+		boolean flag_chmod_tmp = net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_chmod;;
+		boolean flag_exec_tmp = net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_exec;;
 
 		net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_kill = false;
 		net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_scp = false;

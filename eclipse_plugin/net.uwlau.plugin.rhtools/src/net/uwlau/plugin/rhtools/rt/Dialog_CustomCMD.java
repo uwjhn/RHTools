@@ -41,15 +41,15 @@ public class Dialog_CustomCMD extends TitleAreaDialog {
     }
 
     private void createCMD(Composite container) {
-        Label lbtFirstName = new Label(container, SWT.NONE);
-        lbtFirstName.setText("Custom Command:");
+        Label lbtCMD = new Label(container, SWT.NONE);
+        lbtCMD.setText("Custom Command:");
 
-        GridData dataFirstName = new GridData();
-        dataFirstName.grabExcessHorizontalSpace = true;
-        dataFirstName.horizontalAlignment = GridData.FILL;
+        GridData dataCMD = new GridData();
+        dataCMD.grabExcessHorizontalSpace = true;
+        dataCMD.horizontalAlignment = GridData.FILL;
 
         txt_cmd = new Text(container, SWT.BORDER);
-        txt_cmd.setLayoutData(dataFirstName);
+        txt_cmd.setLayoutData(dataCMD);
     }
 
 
