@@ -64,7 +64,7 @@ public class Exec {
 			// console out in target IDE
 			MessageConsole myConsole = net.uwlau.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
-			out.println("*RHTOOLS ERROR-> No route to host");
+			out.println("*RHTOOLS ERROR: No route to host");
 		}
 
 	}
@@ -99,7 +99,7 @@ public class Exec {
 				if (channel.isClosed()) {
 					if (in.available() > 0)
 						continue;
-					System.out.println("*RHTOOLS --> SSH/SCP COMMAND DONE");
+					System.out.println("exit-status: " + channel.getExitStatus());
 					break;
 				}
 				try {
