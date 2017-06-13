@@ -1,4 +1,4 @@
-package net.uwlau.plugin.rhtools.handlers;
+package com.digitizee.plugin.rhtools.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -29,16 +29,16 @@ public class ConfigHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		
 		// open window to get the custom command
-		net.uwlau.plugin.rhtools.rt.Dialog_Config CFGdialog = new net.uwlau.plugin.rhtools.rt.Dialog_Config(null);
+		com.digitizee.plugin.rhtools.rt.Dialog_Config CFGdialog = new com.digitizee.plugin.rhtools.rt.Dialog_Config(null);
 		CFGdialog.create();
 		CFGdialog.open();
 		
-		net.uwlau.plugin.rhtools.handlers.ConfigHandler.host=CFGdialog.getHost();
-		net.uwlau.plugin.rhtools.handlers.ConfigHandler.port=Integer.parseInt(CFGdialog.getPort());
-		net.uwlau.plugin.rhtools.handlers.ConfigHandler.user=CFGdialog.getUser();
-		net.uwlau.plugin.rhtools.handlers.ConfigHandler.passwd=CFGdialog.getPassword();
-		net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name=CFGdialog.getBinaryName();
-		net.uwlau.plugin.rhtools.handlers.ConfigHandler.path_to_binary=CFGdialog.getPathToBinary();
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.host=CFGdialog.getHost();
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.port=Integer.parseInt(CFGdialog.getPort());
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.user=CFGdialog.getUser();
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.passwd=CFGdialog.getPassword();
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_name=CFGdialog.getBinaryName();
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.path_to_binary=CFGdialog.getPathToBinary();
 		
 		return null;
 	}

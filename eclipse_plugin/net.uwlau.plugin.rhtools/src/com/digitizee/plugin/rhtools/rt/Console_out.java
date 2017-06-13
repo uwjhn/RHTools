@@ -1,4 +1,4 @@
-package net.uwlau.plugin.rhtools.rt;
+package com.digitizee.plugin.rhtools.rt;
 
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;

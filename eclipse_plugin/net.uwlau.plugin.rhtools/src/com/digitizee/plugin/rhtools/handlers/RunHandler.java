@@ -1,4 +1,4 @@
-package net.uwlau.plugin.rhtools.handlers;
+package com.digitizee.plugin.rhtools.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -13,7 +13,7 @@ public class RunHandler extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		net.uwlau.plugin.rhtools.rt.Exec.rt_run();
+		com.digitizee.plugin.rhtools.rt.Exec.rt_run();
 		return null;
 	}
 }

@@ -1,4 +1,4 @@
-package net.uwlau.plugin.rhtools.rt;
+package com.digitizee.plugin.rhtools.rt;
 
 import com.jcraft.jsch.*;
 import java.io.*;
@@ -17,26 +17,26 @@ public class Exec {
 
 			JSch jsch = new JSch();
 
-			Session session = jsch.getSession(net.uwlau.plugin.rhtools.handlers.ConfigHandler.user,
-					net.uwlau.plugin.rhtools.handlers.ConfigHandler.host,
-					net.uwlau.plugin.rhtools.handlers.ConfigHandler.port);
+			Session session = jsch.getSession(com.digitizee.plugin.rhtools.handlers.ConfigHandler.user,
+					com.digitizee.plugin.rhtools.handlers.ConfigHandler.host,
+					com.digitizee.plugin.rhtools.handlers.ConfigHandler.port);
 
 			java.util.Properties config = new java.util.Properties();
 			config.put("StrictHostKeyChecking", "no");
 			session.setConfig(config);
-			session.setPassword(net.uwlau.plugin.rhtools.handlers.ConfigHandler.passwd);
+			session.setPassword(com.digitizee.plugin.rhtools.handlers.ConfigHandler.passwd);
 			session.connect();
 
-			MessageConsole myConsole = net.uwlau.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
+			MessageConsole myConsole = com.digitizee.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
 			out.println("\n*RHTOOLS -> Starting RHTool Task(s)");
 
-			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_kill) {
+			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_kill) {
 				out.println("*RHTOOLS --> Kill binary activities");
 				ssh_exec(session,
-						"kill -9 $(pidof " + net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name + ")");
+						"kill -9 $(pidof " + com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_name + ")");
 			}
-			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_scp) {
+			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_scp) {
 				out.println("*RHTOOLS --> Save & Build Project");
 				// save project files
 				PlatformUI.getWorkbench().saveAllEditors(false);
@@ -46,34 +46,34 @@ public class Exec {
 				out.println("*RHTOOLS --> Copy binary to remote hardware");
 				scp(session);
 			}
-			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_chmod) {
+			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_chmod) {
 				out.println("*RHTOOLS --> Make binary executeable");
-				ssh_exec(session, "chmod +x " + net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name);
+				ssh_exec(session, "chmod +x " + com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_name);
 			}
-			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_exec) {
+			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_exec) {
 				out.println("*RHTOOLS --> Run binary");
 				output = false; // avoids hanging the IDE
-				ssh_exec(session, "nohup ./" + net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name);
+				ssh_exec(session, "nohup ./" + com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_name);
 				output = true;
 			}
-			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_shutdown) {
+			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_shutdown) {
 				out.println("*RHTOOLS --> Shutdown device");
 				ssh_exec(session, "sudo shutdown -h now");
 			}
-			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_reboot) {
+			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_reboot) {
 				out.println("*RHTOOLS --> Reboot device");
 				ssh_exec(session, "sudo reboot");
 			}
-			if (net.uwlau.plugin.rhtools.handlers.ConfigHandler.flag_custom) {
-				out.println("*RHTOOLS --> " + net.uwlau.plugin.rhtools.handlers.ConfigHandler.custom_cmd);
-				ssh_exec(session, net.uwlau.plugin.rhtools.handlers.ConfigHandler.custom_cmd);
+			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_custom) {
+				out.println("*RHTOOLS --> " + com.digitizee.plugin.rhtools.handlers.ConfigHandler.custom_cmd);
+				ssh_exec(session, com.digitizee.plugin.rhtools.handlers.ConfigHandler.custom_cmd);
 			}
 
 			out.println("*RHTOOLS -> RHTool Task(s) done.");
 			session.disconnect();
 
 		} catch (Exception e) {
-			MessageConsole myConsole = net.uwlau.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
+			MessageConsole myConsole = com.digitizee.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
 			out.println("*RHTOOLS ERROR: " + e.toString());
 		}
@@ -97,7 +97,7 @@ public class Exec {
 
 			channel.connect();
 
-			MessageConsole myConsole = net.uwlau.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
+			MessageConsole myConsole = com.digitizee.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
 
 			if (output) {
@@ -132,7 +132,7 @@ public class Exec {
 		}
 
 		catch (Exception e) {
-			MessageConsole myConsole = net.uwlau.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
+			MessageConsole myConsole = com.digitizee.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
 			out.println(e.toString());
 		}
@@ -145,7 +145,7 @@ public class Exec {
 		try {
 
 			// exec 'scp -t rfile' remotely
-			String command = "scp " + " -t " + net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name;
+			String command = "scp " + " -t " + com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_name;
 			Channel channel = session.openChannel("exec");
 			((ChannelExec) channel).setCommand(command);
 
@@ -159,8 +159,8 @@ public class Exec {
 				System.exit(0);
 			}
 
-			String lfile = net.uwlau.plugin.rhtools.handlers.ConfigHandler.path_to_binary
-					+ net.uwlau.plugin.rhtools.handlers.ConfigHandler.binary_name;
+			String lfile = com.digitizee.plugin.rhtools.handlers.ConfigHandler.path_to_binary
+					+ com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_name;
 			File _lfile = new File(lfile);
 
 			// send "C0644 filesize filename", where filename should not include
@@ -199,14 +199,14 @@ public class Exec {
 			}
 			outStream.close();
 
-			MessageConsole myConsole = net.uwlau.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
+			MessageConsole myConsole = com.digitizee.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
 			out.println("*RHTOOLS ---> SCP Command finished");
 
 			channel.disconnect();
 
 		} catch (Exception e) {
-			MessageConsole myConsole = net.uwlau.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
+			MessageConsole myConsole = com.digitizee.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
 			out.println("*RHTOOLS SCP-ERROR: " + e.toString());
 
@@ -237,7 +237,7 @@ public class Exec {
 				sb.append((char) c);
 			} while (c != '\n');
 
-			MessageConsole myConsole = net.uwlau.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
+			MessageConsole myConsole = com.digitizee.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
 
 			if (b == 1) { // error

@@ -6,103 +6,103 @@
          point="org.eclipse.ui.commands">
       <category
             name="RHTCategory"
-            id="net.uwlau.plugin.rhtools.rhtoolsCommand.category">
+            id="com.digitizee.plugin.rhtools.rhtoolsCommand.category">
       </category>
       <command
             name="Run"
-            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
-            id="net.uwlau.plugin.rhtools.commands.rhtoolsRunCommand">
+            categoryId="com.digitizee.plugin.rhtools.rhtoolsCommand.category"
+            id="com.digitizee.plugin.rhtools.commands.rhtoolsRunCommand">
       </command>
       <command
-            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
-            id="net.uwlau.plugin.rhtools.commands.rhtoolsConfigCommand"
+            categoryId="com.digitizee.plugin.rhtools.rhtoolsCommand.category"
+            id="com.digitizee.plugin.rhtools.commands.rhtoolsConfigCommand"
             name="Configuration">
       </command>
       <command
-            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
-            id="net.uwlau.plugin.rhtools.commands.rhtoolsAboutCommand"
+            categoryId="com.digitizee.plugin.rhtools.rhtoolsCommand.category"
+            id="com.digitizee.plugin.rhtools.commands.rhtoolsAboutCommand"
             name="About">
       </command>
       <command
-            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
-            id="net.uwlau.plugin.rhtools.commands.rhtoolsExecNowCommand"
+            categoryId="com.digitizee.plugin.rhtools.rhtoolsCommand.category"
+            id="com.digitizee.plugin.rhtools.commands.rhtoolsExecNowCommand"
             name="exec_now">
       </command>
       <command
-            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
-            id="net.uwlau.plugin.rhtools.commands.rhtoolsKillNowCommand"
+            categoryId="com.digitizee.plugin.rhtools.rhtoolsCommand.category"
+            id="com.digitizee.plugin.rhtools.commands.rhtoolsKillNowCommand"
             name="kill_now">
       </command>
       <command
-            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
-            id="net.uwlau.plugin.rhtools.commands.rhtoolsRebootNowCommand"
+            categoryId="com.digitizee.plugin.rhtools.rhtoolsCommand.category"
+            id="com.digitizee.plugin.rhtools.commands.rhtoolsRebootNowCommand"
             name="RebootNow">
       </command>
       <command
-            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
-            id="net.uwlau.plugin.rhtools.commands.rhtoolsCopyNowCommand"
+            categoryId="com.digitizee.plugin.rhtools.rhtoolsCommand.category"
+            id="com.digitizee.plugin.rhtools.commands.rhtoolsCopyNowCommand"
             name="CopyNow">
       </command>
       <command
-            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
-            id="net.uwlau.plugin.rhtools.commands.rhtoolsShutdownNowCommand"
+            categoryId="com.digitizee.plugin.rhtools.rhtoolsCommand.category"
+            id="com.digitizee.plugin.rhtools.commands.rhtoolsShutdownNowCommand"
             name="ShutdownNow">
       </command>
       <command
-            categoryId="net.uwlau.plugin.rhtools.rhtoolsCommand.category"
-            id="net.uwlau.plugin.rhtools.commands.rhtoolsCustomNowCommand"
+            categoryId="com.digitizee.plugin.rhtools.rhtoolsCommand.category"
+            id="com.digitizee.plugin.rhtools.commands.rhtoolsCustomNowCommand"
             name="CustomNow">
       </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsRunCommand"
-            class="net.uwlau.plugin.rhtools.handlers.RunHandler">
+            commandId="com.digitizee.plugin.rhtools.commands.rhtoolsRunCommand"
+            class="com.digitizee.plugin.rhtools.handlers.RunHandler">
       </handler>
       <handler
-            class="net.uwlau.plugin.rhtools.handlers.ConfigHandler"
-            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsConfigCommand">
+            class="com.digitizee.plugin.rhtools.handlers.ConfigHandler"
+            commandId="com.digitizee.plugin.rhtools.commands.rhtoolsConfigCommand">
       </handler>
       <handler
-            class="net.uwlau.plugin.rhtools.handlers.AboutHandler"
-            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsAboutCommand">
+            class="com.digitizee.plugin.rhtools.handlers.AboutHandler"
+            commandId="com.digitizee.plugin.rhtools.commands.rhtoolsAboutCommand">
       </handler>
       <handler
-            class="net.uwlau.plugin.rhtools.handlers.CopyNowHandler"
-            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsCopyNowCommand">
+            class="com.digitizee.plugin.rhtools.handlers.CopyNowHandler"
+            commandId="com.digitizee.plugin.rhtools.commands.rhtoolsCopyNowCommand">
       </handler>
       <handler
-            class="net.uwlau.plugin.rhtools.handlers.ExecNowHandler"
-            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsExecNowCommand">
+            class="com.digitizee.plugin.rhtools.handlers.ExecNowHandler"
+            commandId="com.digitizee.plugin.rhtools.commands.rhtoolsExecNowCommand">
       </handler>
       <handler
-            class="net.uwlau.plugin.rhtools.handlers.KillNowHandler"
-            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsKillNowCommand">
+            class="com.digitizee.plugin.rhtools.handlers.KillNowHandler"
+            commandId="com.digitizee.plugin.rhtools.commands.rhtoolsKillNowCommand">
       </handler>
       <handler
-            class="net.uwlau.plugin.rhtools.handlers.ShutdownNowHandler"
-            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsShutdownNowCommand">
+            class="com.digitizee.plugin.rhtools.handlers.ShutdownNowHandler"
+            commandId="com.digitizee.plugin.rhtools.commands.rhtoolsShutdownNowCommand">
       </handler>
       <handler
-            class="net.uwlau.plugin.rhtools.handlers.RebootNowHandler"
-            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsRebootNowCommand">
+            class="com.digitizee.plugin.rhtools.handlers.RebootNowHandler"
+            commandId="com.digitizee.plugin.rhtools.commands.rhtoolsRebootNowCommand">
       </handler>
       <handler
-            class="net.uwlau.plugin.rhtools.handlers.CustomNowHandler"
-            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsCustomNowCommand">
+            class="com.digitizee.plugin.rhtools.handlers.CustomNowHandler"
+            commandId="com.digitizee.plugin.rhtools.commands.rhtoolsCustomNowCommand">
       </handler>
    </extension>
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsRunCommand"
+            commandId="com.digitizee.plugin.rhtools.commands.rhtoolsRunCommand"
             contextId="org.eclipse.ui.contexts.window"
             sequence="M1+6"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </key>
       <key
-            commandId="net.uwlau.plugin.rhtools.commands.rhtoolsConfigCommand"
+            commandId="com.digitizee.plugin.rhtools.commands.rhtoolsConfigCommand"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+7">
@@ -113,20 +113,20 @@
       <menuContribution
             locationURI="menu:org.eclipse.ui.main.menu?after=additions">
          <menu
-               id="net.uwlau.plugin.rhtools.menus.rhtools"
+               id="com.digitizee.plugin.rhtools.menus.rhtools"
                label="RHTools"
                mnemonic="M">
             <command
-                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsRunCommand"
+                  commandId="com.digitizee.plugin.rhtools.commands.rhtoolsRunCommand"
                   icon="icons/run.gif"
-                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  id="com.digitizee.plugin.rhtools.menus.rhtoolsCommand"
                   label="Run..."
                   mnemonic="S">
             </command>
             <command
-                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsConfigCommand"
+                  commandId="com.digitizee.plugin.rhtools.commands.rhtoolsConfigCommand"
                   icon="icons/config.gif"
-                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  id="com.digitizee.plugin.rhtools.menus.rhtoolsCommand"
                   label="Configurations"
                   mnemonic="S">
             </command>
@@ -135,26 +135,26 @@
        			visible="true">
 			</separator>
             <command
-                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsCopyNowCommand"
-                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  commandId="com.digitizee.plugin.rhtools.commands.rhtoolsCopyNowCommand"
+                  id="com.digitizee.plugin.rhtools.menus.rhtoolsCommand"
                   label="Copy Binary"
                   mnemonic="S">
             </command>
             <command
-                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsExecNowCommand"
-                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  commandId="com.digitizee.plugin.rhtools.commands.rhtoolsExecNowCommand"
+                  id="com.digitizee.plugin.rhtools.menus.rhtoolsCommand"
                   label="Exec Binary"
                   mnemonic="S">
             </command>
             <command
-                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsKillNowCommand"
-                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  commandId="com.digitizee.plugin.rhtools.commands.rhtoolsKillNowCommand"
+                  id="com.digitizee.plugin.rhtools.menus.rhtoolsCommand"
                   label="Kill Binary"
                   mnemonic="S">
             </command>
             <command
-                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsCustomNowCommand"
-                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  commandId="com.digitizee.plugin.rhtools.commands.rhtoolsCustomNowCommand"
+                  id="com.digitizee.plugin.rhtools.menus.rhtoolsCommand"
                   label="Custom Command"
                   mnemonic="S">
             </command>
@@ -163,14 +163,14 @@
                   visible="true">
             </separator>
             <command
-                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsShutdownNowCommand"
-                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  commandId="com.digitizee.plugin.rhtools.commands.rhtoolsShutdownNowCommand"
+                  id="com.digitizee.plugin.rhtools.menus.rhtoolsCommand"
                   label="Shutdown Device"
                   mnemonic="S">
             </command>
             <command
-                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsRebootNowCommand"
-                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  commandId="com.digitizee.plugin.rhtools.commands.rhtoolsRebootNowCommand"
+                  id="com.digitizee.plugin.rhtools.menus.rhtoolsCommand"
                   label="Reboot Device"
                   mnemonic="S">
             </command>
@@ -179,9 +179,9 @@
                   visible="true">
             </separator>
              <command
-                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsAboutCommand"
+                  commandId="com.digitizee.plugin.rhtools.commands.rhtoolsAboutCommand"
                   icon="icons/info.gif"
-                  id="net.uwlau.plugin.rhtools.menus.rhtoolsCommand"
+                  id="com.digitizee.plugin.rhtools.menus.rhtoolsCommand"
                   label="About"
                   mnemonic="S">
             </command>
@@ -190,17 +190,17 @@
       <menuContribution
             locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
          <toolbar
-               id="net.uwlau.plugin.rhtools.toolbars.rhtoolsToolbar">
+               id="com.digitizee.plugin.rhtools.toolbars.rhtoolsToolbar">
             <command
-                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsRunCommand"
+                  commandId="com.digitizee.plugin.rhtools.commands.rhtoolsRunCommand"
                   icon="icons/run.gif"
                   tooltip="RHTools *RUN"
-                  id="net.uwlau.plugin.rhtools.toolbars.run">
+                  id="com.digitizee.plugin.rhtools.toolbars.run">
             </command>
             <command
-                  commandId="net.uwlau.plugin.rhtools.commands.rhtoolsConfigCommand"
+                  commandId="com.digitizee.plugin.rhtools.commands.rhtoolsConfigCommand"
                   icon="icons/config.gif"
-                  id="net.uwlau.plugin.rhtools.toolbars.config"
+                  id="com.digitizee.plugin.rhtools.toolbars.config"
                   tooltip="RHTools *CONFIG">
             </command>
          </toolbar>

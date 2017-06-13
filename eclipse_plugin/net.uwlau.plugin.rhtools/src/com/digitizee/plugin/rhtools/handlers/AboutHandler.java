@@ -1,4 +1,4 @@
-package net.uwlau.plugin.rhtools.handlers;
+package com.digitizee.plugin.rhtools.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -14,7 +14,7 @@ public class AboutHandler extends AbstractHandler {
 
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 		MessageDialog.openInformation(window.getShell(), "RHTools",
-				"RHTools  ©uwlau \nhttps://github.com/uwlau/RHTools");
+				"RHTools  ©digitizee \nhttps://rhtools.digitizee.com");
 		return null;
 	}
 }
