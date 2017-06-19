@@ -4,12 +4,16 @@ import com.jcraft.jsch.*;
 import java.io.*;
 import org.eclipse.ui.console.*;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.core.resources.*;
-
 
 public class Exec {
 
 	public static boolean output = true;
+
+	// get binary name without path
+	static int lastSlash = (com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_path.lastIndexOf("/") + 1);
+	static int StringLength = com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_path.length();
+	public static String binary_name = com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_path
+			.substring(lastSlash, StringLength);
 
 	public static void rt_run() {
 
@@ -33,27 +37,25 @@ public class Exec {
 
 			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_kill) {
 				out.println("*RHTOOLS --> Kill binary activities");
-				ssh_exec(session,
-						"kill -9 $(pidof " + com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_name + ")");
+				ssh_exec(session, "kill -9 $(pidof " + binary_name + ")");
 			}
 			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_scp) {
 				out.println("*RHTOOLS --> Save & Build Project");
 				// save project files
 				PlatformUI.getWorkbench().saveAllEditors(false);
 				// build project
-				
-				
+
 				out.println("*RHTOOLS --> Copy binary to remote hardware");
 				scp(session);
 			}
 			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_chmod) {
 				out.println("*RHTOOLS --> Make binary executeable");
-				ssh_exec(session, "chmod +x " + com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_name);
+				ssh_exec(session, "chmod +x " + binary_name);
 			}
 			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_exec) {
 				out.println("*RHTOOLS --> Run binary");
 				output = false; // avoids hanging the IDE
-				ssh_exec(session, "nohup ./" + com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_name);
+				ssh_exec(session, "nohup ./" + binary_name);
 				output = true;
 			}
 			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_shutdown) {
@@ -145,7 +147,7 @@ public class Exec {
 		try {
 
 			// exec 'scp -t rfile' remotely
-			String command = "scp " + " -t " + com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_name;
+			String command = "scp " + " -t " + binary_name;
 			Channel channel = session.openChannel("exec");
 			((ChannelExec) channel).setCommand(command);
 
@@ -159,8 +161,7 @@ public class Exec {
 				System.exit(0);
 			}
 
-			String lfile = com.digitizee.plugin.rhtools.handlers.ConfigHandler.path_to_binary
-					+ com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_name;
+			String lfile = com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_path;
 			File _lfile = new File(lfile);
 
 			// send "C0644 filesize filename", where filename should not include
@@ -249,5 +250,5 @@ public class Exec {
 		}
 		return b;
 	}
-	
+
 }

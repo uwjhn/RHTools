@@ -11,8 +11,7 @@ public class ConfigHandler extends AbstractHandler {
 	public static int port = 50;
 	public static String user = "pi";
 	public static String passwd = "raspberry";
-	public static String binary_name = "";
-	public static String path_to_binary = "";
+	public static String binary_path = "/default";
 	public static String custom_cmd = "echo test";
 
 	
@@ -37,8 +36,7 @@ public class ConfigHandler extends AbstractHandler {
 		com.digitizee.plugin.rhtools.handlers.ConfigHandler.port=Integer.parseInt(CFGdialog.getPort());
 		com.digitizee.plugin.rhtools.handlers.ConfigHandler.user=CFGdialog.getUser();
 		com.digitizee.plugin.rhtools.handlers.ConfigHandler.passwd=CFGdialog.getPassword();
-		com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_name=CFGdialog.getBinaryName();
-		com.digitizee.plugin.rhtools.handlers.ConfigHandler.path_to_binary=CFGdialog.getPathToBinary();
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_path=CFGdialog.getBinaryPath();
 		com.digitizee.plugin.rhtools.handlers.ConfigHandler.custom_cmd=CFGdialog.getCustomCMD();
 		
 		return null;
