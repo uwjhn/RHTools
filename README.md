@@ -8,5 +8,5 @@ Use: `./srciptname.sh config-name.cfg`
 Install:
 
 Eclipse Plugin Update Site:
-http://rhtools.digitizee.com/plugins
+http://rhtools.digitizee.com/updatesite/
 
