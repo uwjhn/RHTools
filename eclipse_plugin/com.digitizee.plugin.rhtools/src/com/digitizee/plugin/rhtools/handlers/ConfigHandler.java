@@ -15,9 +15,9 @@ public class ConfigHandler extends AbstractHandler {
 	public static String custom_cmd = "echo test";
 
 	
-	public static boolean flag_kill = true;
+	public static boolean flag_kill = false;
 	public static boolean flag_scp = true;
-	public static boolean flag_chmod = true;
+	public static boolean flag_chmod = false;
 	public static boolean flag_exec = true;
 	public static boolean flag_shutdown = false; //always false in config
 	public static boolean flag_reboot = false; //always false in config
@@ -38,6 +38,11 @@ public class ConfigHandler extends AbstractHandler {
 		com.digitizee.plugin.rhtools.handlers.ConfigHandler.passwd=CFGdialog.getPassword();
 		com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_path=CFGdialog.getBinaryPath();
 		com.digitizee.plugin.rhtools.handlers.ConfigHandler.custom_cmd=CFGdialog.getCustomCMD();
+		
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_kill=CFGdialog.getKillFlag();
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_scp=CFGdialog.getSCPFlag();
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_chmod=CFGdialog.getChmodFlag();
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_exec=CFGdialog.getExecFlag();
 		
 		return null;
 	}

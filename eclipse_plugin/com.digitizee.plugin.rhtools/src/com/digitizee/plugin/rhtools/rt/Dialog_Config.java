@@ -31,6 +31,16 @@ public class Dialog_Config extends TitleAreaDialog {
 	private String binary_path;
 	private String custom_cmd;
 
+	private boolean bool_flag_kill;
+	private boolean bool_flag_SCP;
+	private boolean bool_flag_Chmod;
+	private boolean bool_flag_Exec;
+
+	private Button KillFlagbox;
+	private Button SCPFlagbox;
+	private Button ChmodFlagbox;
+	private Button ExecFlagbox;
+
 	public Dialog_Config(Shell parentShell) {
 		super(parentShell);
 	}
@@ -57,6 +67,11 @@ public class Dialog_Config extends TitleAreaDialog {
 		createBinaryData(container);
 		createBinaryText(container);
 		createCustomCMD(container);
+		createKillFlagbox(container);
+		createSCPFlagbox(container);
+		createChmodFlagbox(container);
+		createExecFlagbox(container);
+
 		return area;
 	}
 
@@ -124,7 +139,7 @@ public class Dialog_Config extends TitleAreaDialog {
 		txt_custom_cmd.setLayoutData(datapath);
 		txt_custom_cmd.setText(com.digitizee.plugin.rhtools.handlers.ConfigHandler.custom_cmd);
 	}
-	
+
 	private void createBinaryText(Composite container) {
 		Label lbtpath = new Label(container, SWT.NONE);
 		lbtpath.setText("Selected binary:");
@@ -155,7 +170,7 @@ public class Dialog_Config extends TitleAreaDialog {
 			public void widgetSelected(SelectionEvent e) {
 
 				Button mButton = new Button(container, SWT.NONE);
-				
+
 				FileDialog dlg = new FileDialog(mButton.getShell(), SWT.OPEN);
 				dlg.setText("Open");
 				binary_path = dlg.open();
@@ -165,9 +180,74 @@ public class Dialog_Config extends TitleAreaDialog {
 			}
 		});
 	}
-	
-	
 
+	private void createKillFlagbox(Composite container) {
+		Label lbtpath = new Label(container, SWT.NONE);
+		lbtpath.setText("Kill old binary activities while running script:");
+
+		GridData datapath = new GridData();
+		datapath.grabExcessHorizontalSpace = true;
+		datapath.horizontalAlignment = GridData.FILL;
+
+		KillFlagbox = new Button(container, SWT.CHECK);
+
+		if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_kill) {
+			KillFlagbox.setSelection(true);
+		} else {
+			KillFlagbox.setSelection(false);
+		}
+	}
+	
+	private void createSCPFlagbox(Composite container) {
+		Label lbtpath = new Label(container, SWT.NONE);
+		lbtpath.setText("Copy new binary while running script:");
+
+		GridData datapath = new GridData();
+		datapath.grabExcessHorizontalSpace = true;
+		datapath.horizontalAlignment = GridData.FILL;
+
+		SCPFlagbox = new Button(container, SWT.CHECK);
+
+		if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_scp) {
+			SCPFlagbox.setSelection(true);
+		} else {
+			SCPFlagbox.setSelection(false);
+		}
+	}
+	
+	private void createChmodFlagbox(Composite container) {
+		Label lbtpath = new Label(container, SWT.NONE);
+		lbtpath.setText("Make binary executable while running script:");
+
+		GridData datapath = new GridData();
+		datapath.grabExcessHorizontalSpace = true;
+		datapath.horizontalAlignment = GridData.FILL;
+
+		ChmodFlagbox = new Button(container, SWT.CHECK);
+
+		if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_chmod) {
+			ChmodFlagbox.setSelection(true);
+		} else {
+			ChmodFlagbox.setSelection(false);
+		}
+	}
+	
+	private void createExecFlagbox(Composite container) {
+		Label lbtpath = new Label(container, SWT.NONE);
+		lbtpath.setText("Run binary while running script:");
+
+		GridData datapath = new GridData();
+		datapath.grabExcessHorizontalSpace = true;
+		datapath.horizontalAlignment = GridData.FILL;
+
+		ExecFlagbox = new Button(container, SWT.CHECK);
+
+		if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_exec) {
+			ExecFlagbox.setSelection(true);
+		} else {
+			ExecFlagbox.setSelection(false);
+		}
+	}
 
 	@Override
 	protected boolean isResizable() {
@@ -181,7 +261,31 @@ public class Dialog_Config extends TitleAreaDialog {
 		port = txt_port.getText();
 		user = txt_user.getText();
 		passwd = txt_passwd.getText();
+		binary_path = txt_binary_path.getText();
 		custom_cmd = txt_custom_cmd.getText();
+
+		// save flags
+		if (KillFlagbox.getSelection() == true) {
+			bool_flag_kill = true;
+		} else {
+			bool_flag_kill = false;
+		}
+		if (SCPFlagbox.getSelection() == true) {
+			bool_flag_SCP = true;
+		} else {
+			bool_flag_SCP = false;
+		}
+		if (ChmodFlagbox.getSelection() == true) {
+			bool_flag_Chmod = true;
+		} else {
+			bool_flag_Chmod = false;
+		}
+		if (ExecFlagbox.getSelection() == true) {
+			bool_flag_Exec = true;
+		} else {
+			bool_flag_Exec = false;
+		}
+
 	}
 
 	@Override
@@ -214,4 +318,19 @@ public class Dialog_Config extends TitleAreaDialog {
 		return custom_cmd;
 	}
 
+	public Boolean getKillFlag() {
+		return bool_flag_kill;
+	}
+	
+	public Boolean getSCPFlag() {
+		return bool_flag_SCP;
+	}
+
+	public Boolean getChmodFlag() {
+		return bool_flag_Chmod;
+	}
+	
+	public Boolean getExecFlag() {
+		return bool_flag_Exec;
+	}
 }
