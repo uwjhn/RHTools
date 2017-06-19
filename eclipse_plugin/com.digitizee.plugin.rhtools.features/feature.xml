@@ -4,6 +4,7 @@
       label="RHTools"
       version="0.0.2.qualifier"
       provider-name="digitizee"
+      plugin="com.digitizee.plugin.rhtools"
       os="linux"
       nl="en"
       arch="x86,x86_64">
