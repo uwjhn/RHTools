@@ -4,7 +4,6 @@ import com.jcraft.jsch.*;
 import java.io.*;
 import org.eclipse.ui.console.*;
 import org.eclipse.ui.PlatformUI;
-
 public class Exec {
 
 	public static boolean output = true;
@@ -15,7 +14,7 @@ public class Exec {
 	public static String binary_name = com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_path
 			.substring(lastSlash, StringLength);
 
-	public static void rt_run() {
+	public static <IProgressMonitor> void rt_run() {
 
 		try {
 
@@ -44,6 +43,7 @@ public class Exec {
 				// save project files
 				PlatformUI.getWorkbench().saveAllEditors(false);
 				// build project
+
 
 				out.println("*RHTOOLS --> Copy binary to remote hardware");
 				scp(session);

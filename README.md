@@ -5,5 +5,8 @@ Remote Hardware Tools [RHTOOLS v0.002a]
 Use: `./srciptname.sh config-name.cfg` 
 
 ### Eclipse Plugin
-todo
+Install:
+
+Eclipse Plugin Update Site:
+http://rhtools.digitizee.com/plugins
 
