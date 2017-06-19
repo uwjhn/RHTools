@@ -19,6 +19,7 @@ public class Dialog_Config extends TitleAreaDialog {
     private Text txt_passwd;
     private Text txt_binary_name;
     private Text txt_path_to_binary;
+    private Text txt_custom_cmd;
 
     private String host;
     private String port;
@@ -26,6 +27,7 @@ public class Dialog_Config extends TitleAreaDialog {
     private String passwd;
     private String binary_name;
     private String path_to_binary;
+    private String custom_cmd;
     
     public Dialog_Config(Shell parentShell) {
         super(parentShell);
@@ -52,6 +54,7 @@ public class Dialog_Config extends TitleAreaDialog {
         createPasswd(container);
         createBinaryName(container);
         createPathToBinary(container);
+        createCustomCMD(container);
         return area;
     }
 
@@ -65,6 +68,7 @@ public class Dialog_Config extends TitleAreaDialog {
 
         txt_host = new Text(container, SWT.BORDER);
         txt_host.setLayoutData(datahost);
+        txt_host.setText(com.digitizee.plugin.rhtools.handlers.ConfigHandler.host);    
     }
     
     private void createPort(Composite container) {
@@ -77,6 +81,7 @@ public class Dialog_Config extends TitleAreaDialog {
 
         txt_port = new Text(container, SWT.BORDER);
         txt_port.setLayoutData(dataport);
+        txt_port.setText(Integer.toString(com.digitizee.plugin.rhtools.handlers.ConfigHandler.port)); 
     }
 
     private void createUser(Composite container) {
@@ -89,6 +94,7 @@ public class Dialog_Config extends TitleAreaDialog {
 
         txt_user = new Text(container, SWT.BORDER);
         txt_user.setLayoutData(datauser);
+        txt_user.setText(com.digitizee.plugin.rhtools.handlers.ConfigHandler.user); 
     }
     
     private void createPasswd(Composite container) {
@@ -101,6 +107,7 @@ public class Dialog_Config extends TitleAreaDialog {
 
         txt_passwd = new Text(container, SWT.BORDER);
         txt_passwd.setLayoutData(datapasswd);
+        txt_passwd.setText(com.digitizee.plugin.rhtools.handlers.ConfigHandler.passwd); 
     }
     
     private void createBinaryName(Composite container) {
@@ -113,6 +120,7 @@ public class Dialog_Config extends TitleAreaDialog {
 
         txt_binary_name = new Text(container, SWT.BORDER);
         txt_binary_name.setLayoutData(databinary);
+        txt_binary_name.setText(com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_name); 
     }
     
     private void createPathToBinary(Composite container) {
@@ -125,6 +133,20 @@ public class Dialog_Config extends TitleAreaDialog {
 
         txt_path_to_binary = new Text(container, SWT.BORDER);
         txt_path_to_binary.setLayoutData(datapath);
+        txt_path_to_binary.setText(com.digitizee.plugin.rhtools.handlers.ConfigHandler.path_to_binary); 
+    }
+    
+    private void createCustomCMD(Composite container) {
+        Label lbtpath = new Label(container, SWT.NONE);
+        lbtpath.setText("Custom Shell Command:");
+
+        GridData datapath = new GridData();
+        datapath.grabExcessHorizontalSpace = true;
+        datapath.horizontalAlignment = GridData.FILL;
+
+        txt_custom_cmd = new Text(container, SWT.BORDER);
+        txt_custom_cmd.setLayoutData(datapath);
+        txt_custom_cmd.setText(com.digitizee.plugin.rhtools.handlers.ConfigHandler.custom_cmd); 
     }
 
     @Override
@@ -141,6 +163,7 @@ public class Dialog_Config extends TitleAreaDialog {
     	passwd = txt_passwd.getText();
     	binary_name = txt_binary_name.getText();
     	path_to_binary = txt_path_to_binary.getText();
+    	custom_cmd = txt_custom_cmd.getText();
     }
 
     @Override
@@ -171,6 +194,9 @@ public class Dialog_Config extends TitleAreaDialog {
     
     public String getPathToBinary() {
         return path_to_binary;
+    }
+    public String getCustomCMD() {
+        return custom_cmd;
     }
 
 }
