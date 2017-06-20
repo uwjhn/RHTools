@@ -42,7 +42,7 @@ public class Dialog_CustomCMD extends TitleAreaDialog {
 
     private void createCMD(Composite container) {
         Label lbtCMD = new Label(container, SWT.NONE);
-        lbtCMD.setText("Custom Command:");
+        lbtCMD.setText("Custom command:");
 
         GridData dataCMD = new GridData();
         dataCMD.grabExcessHorizontalSpace = true;
@@ -50,6 +50,7 @@ public class Dialog_CustomCMD extends TitleAreaDialog {
 
         txt_cmd = new Text(container, SWT.BORDER);
         txt_cmd.setLayoutData(dataCMD);
+        txt_cmd.setText(com.digitizee.plugin.rhtools.handlers.ConfigHandler.custom_cmd);
     }
 
 

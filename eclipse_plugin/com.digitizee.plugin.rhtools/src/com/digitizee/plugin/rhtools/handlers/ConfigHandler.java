@@ -37,7 +37,6 @@ public class ConfigHandler extends AbstractHandler {
 			com.digitizee.plugin.rhtools.handlers.ConfigHandler.user = CFGdialog.getUser();
 			com.digitizee.plugin.rhtools.handlers.ConfigHandler.passwd = CFGdialog.getPassword();
 			com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_path = CFGdialog.getBinaryPath();
-			com.digitizee.plugin.rhtools.handlers.ConfigHandler.custom_cmd = CFGdialog.getCustomCMD();
 
 			com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_kill = CFGdialog.getKillFlag();
 			com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_scp = CFGdialog.getSCPFlag();

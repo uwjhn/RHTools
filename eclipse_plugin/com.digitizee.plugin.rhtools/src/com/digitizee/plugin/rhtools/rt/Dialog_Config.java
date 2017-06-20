@@ -21,7 +21,6 @@ public class Dialog_Config extends TitleAreaDialog {
 	private Text txt_port;
 	private Text txt_user;
 	private Text txt_passwd;
-	private Text txt_custom_cmd;
 	private Text txt_binary_path;
 
 	private String host;
@@ -29,7 +28,6 @@ public class Dialog_Config extends TitleAreaDialog {
 	private String user;
 	private String passwd;
 	private String binary_path;
-	private String custom_cmd;
 
 	private boolean bool_flag_kill;
 	private boolean bool_flag_SCP;
@@ -66,7 +64,6 @@ public class Dialog_Config extends TitleAreaDialog {
 		createPasswd(container);
 		createBinaryData(container);
 		createBinaryText(container);
-		createCustomCMD(container);
 		createKillFlagbox(container);
 		createSCPFlagbox(container);
 		createChmodFlagbox(container);
@@ -125,19 +122,6 @@ public class Dialog_Config extends TitleAreaDialog {
 		txt_passwd = new Text(container, SWT.BORDER);
 		txt_passwd.setLayoutData(datapasswd);
 		txt_passwd.setText(com.digitizee.plugin.rhtools.handlers.ConfigHandler.passwd);
-	}
-
-	private void createCustomCMD(Composite container) {
-		Label lbtpath = new Label(container, SWT.NONE);
-		lbtpath.setText("Custom Shell Command:");
-
-		GridData datapath = new GridData();
-		datapath.grabExcessHorizontalSpace = true;
-		datapath.horizontalAlignment = GridData.FILL;
-
-		txt_custom_cmd = new Text(container, SWT.BORDER);
-		txt_custom_cmd.setLayoutData(datapath);
-		txt_custom_cmd.setText(com.digitizee.plugin.rhtools.handlers.ConfigHandler.custom_cmd);
 	}
 
 	private void createBinaryText(Composite container) {
@@ -262,7 +246,6 @@ public class Dialog_Config extends TitleAreaDialog {
 		user = txt_user.getText();
 		passwd = txt_passwd.getText();
 		binary_path = txt_binary_path.getText();
-		custom_cmd = txt_custom_cmd.getText();
 
 		// save flags
 		if (KillFlagbox.getSelection() == true) {
@@ -312,10 +295,6 @@ public class Dialog_Config extends TitleAreaDialog {
 
 	public String getBinaryPath() {
 		return binary_path;
-	}
-
-	public String getCustomCMD() {
-		return custom_cmd;
 	}
 
 	public Boolean getKillFlag() {
