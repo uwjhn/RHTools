@@ -4,10 +4,7 @@
       label="RHTools"
       version="0.0.2.qualifier"
       provider-name="digitizee"
-      plugin="com.digitizee.plugin.rhtools"
-      os="linux"
-      nl="en"
-      arch="x86,x86_64">
+      plugin="com.digitizee.plugin.rhtools">
 
    <description url="http://rhtools.digitizee.com">
       Remote Hardware Tools
@@ -25,6 +22,12 @@
       <update label="RHTools Update Site" url="http://rhtools.digitizee.com/updatesite"/>
       <discovery label="http://www.digitziee.com" url="http://www.digitziee.com"/>
    </url>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.ui.console" version="3.6.201" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.11.1" match="greaterOrEqual"/>
+   </requires>
 
    <plugin
          id="com.digitizee.plugin.rhtools"

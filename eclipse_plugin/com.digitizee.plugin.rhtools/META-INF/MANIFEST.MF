@@ -2,11 +2,17 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: RHTools
 Bundle-SymbolicName: com.digitizee.plugin.rhtools;singleton:=true
-Bundle-Version: 0.0.1.qualifier
-Bundle-Vendor: uwlau
+Bundle-Version: 0.0.2.qualifier
+Bundle-Vendor: digitizee
 Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.console;bundle-version="3.6.201",
  org.eclipse.core.resources;bundle-version="3.11.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: lib/jsch-0.1.54.jar,
  .
+Export-Package: com.digitizee.plugin.rhtools.handlers,
+ com.digitizee.plugin.rhtools.rt,
+ com.jcraft.jsch,
+ com.jcraft.jsch.jce,
+ com.jcraft.jsch.jcraft,
+ com.jcraft.jsch.jgss

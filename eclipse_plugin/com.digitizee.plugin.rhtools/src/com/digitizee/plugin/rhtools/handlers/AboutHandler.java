@@ -14,7 +14,7 @@ public class AboutHandler extends AbstractHandler {
 
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 		MessageDialog.openInformation(window.getShell(), "RHTools",
-				"RHTools  ©digitizee \nhttps://rhtools.digitizee.com");
+				"RHTools  ©digitizee \n\nhttps://rhtools.digitizee.com\nrhtools@digitizee.com");
 		return null;
 	}
 }
