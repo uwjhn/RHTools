@@ -218,7 +218,7 @@ public class Dialog_Config extends TitleAreaDialog {
 	
 	private void createExecFlagbox(Composite container) {
 		Label lbtpath = new Label(container, SWT.NONE);
-		lbtpath.setText("Run binary while running script:");
+		lbtpath.setText("Execute binary while running script:");
 
 		GridData datapath = new GridData();
 		datapath.grabExcessHorizontalSpace = true;

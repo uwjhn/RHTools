@@ -8,7 +8,7 @@ import org.eclipse.jface.window.Window;
 public class ConfigHandler extends AbstractHandler {
 
 	public static String host = "192.168.1.121";
-	public static int port = 50;
+	public static int port = 22;
 	public static String user = "pi";
 	public static String passwd = "raspberry";
 	public static String binary_path = "/default";
