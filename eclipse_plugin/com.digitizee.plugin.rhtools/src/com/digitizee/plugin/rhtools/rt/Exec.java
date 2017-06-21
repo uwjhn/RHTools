@@ -4,6 +4,7 @@ import com.jcraft.jsch.*;
 import java.io.*;
 import org.eclipse.ui.console.*;
 import org.eclipse.ui.PlatformUI;
+
 public class Exec {
 
 	public static boolean output = true;
@@ -15,8 +16,12 @@ public class Exec {
 			.substring(lastSlash, StringLength);
 
 	public static <IProgressMonitor> void rt_run() {
-
+		
 		try {
+			
+			MessageConsole myConsole = com.digitizee.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
+			MessageConsoleStream out = myConsole.newMessageStream();
+			out.println("\n*RHTOOLS -> Starting RHTool Task(s)");
 
 			JSch jsch = new JSch();
 
@@ -30,10 +35,6 @@ public class Exec {
 			session.setPassword(com.digitizee.plugin.rhtools.handlers.ConfigHandler.passwd);
 			session.connect();
 
-			MessageConsole myConsole = com.digitizee.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
-			MessageConsoleStream out = myConsole.newMessageStream();
-			out.println("\n*RHTOOLS -> Starting RHTool Task(s)");
-
 			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_kill) {
 				out.println("*RHTOOLS --> Kill binary activities");
 				ssh_exec(session, "kill -9 $(pidof " + binary_name + ")");
@@ -43,7 +44,6 @@ public class Exec {
 				// save project files
 				PlatformUI.getWorkbench().saveAllEditors(false);
 				// build project
-
 
 				out.println("*RHTOOLS --> Copy binary to remote hardware");
 				scp(session);
@@ -67,7 +67,7 @@ public class Exec {
 				ssh_exec(session, "sudo reboot");
 			}
 			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_custom) {
-				out.println("*RHTOOLS --> " + com.digitizee.plugin.rhtools.handlers.ConfigHandler.custom_cmd);
+				out.println("*RHTOOLS --> Custom command: " + com.digitizee.plugin.rhtools.handlers.ConfigHandler.custom_cmd);
 				ssh_exec(session, com.digitizee.plugin.rhtools.handlers.ConfigHandler.custom_cmd);
 			}
 
