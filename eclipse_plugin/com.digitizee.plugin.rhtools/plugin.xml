@@ -118,14 +118,14 @@
                mnemonic="M">
             <command
                   commandId="com.digitizee.plugin.rhtools.commands.rhtoolsRunCommand"
-                  icon="icons/run.gif"
+                  icon="icons/run_small.png"
                   id="com.digitizee.plugin.rhtools.menus.rhtoolsCommand"
                   label="Run..."
                   mnemonic="S">
             </command>
             <command
                   commandId="com.digitizee.plugin.rhtools.commands.rhtoolsConfigCommand"
-                  icon="icons/config.gif"
+                  icon="icons/config_small.png"
                   id="com.digitizee.plugin.rhtools.menus.rhtoolsCommand"
                   label="Configurations"
                   mnemonic="S">
@@ -180,7 +180,7 @@
             </separator>
              <command
                   commandId="com.digitizee.plugin.rhtools.commands.rhtoolsAboutCommand"
-                  icon="icons/info.gif"
+                  icon="icons/info_small.png"
                   id="com.digitizee.plugin.rhtools.menus.rhtoolsCommand"
                   label="About"
                   mnemonic="S">
@@ -193,13 +193,13 @@
                id="com.digitizee.plugin.rhtools.toolbars.rhtoolsToolbar">
             <command
                   commandId="com.digitizee.plugin.rhtools.commands.rhtoolsRunCommand"
-                  icon="icons/run.gif"
+                  icon="icons/run_small.png"
                   tooltip="RHTools *RUN"
                   id="com.digitizee.plugin.rhtools.toolbars.run">
             </command>
             <command
                   commandId="com.digitizee.plugin.rhtools.commands.rhtoolsConfigCommand"
-                  icon="icons/config.gif"
+                  icon="icons/config_small.png"
                   id="com.digitizee.plugin.rhtools.toolbars.config"
                   tooltip="RHTools *CONFIG">
             </command>
