@@ -4,6 +4,15 @@ import com.jcraft.jsch.*;
 import java.io.*;
 import org.eclipse.ui.console.*;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IncrementalProjectBuilder;
+import org.eclipse.core.resources.ResourcesPlugin;
+
 
 public class Exec {
 
@@ -14,8 +23,9 @@ public class Exec {
 	static int StringLength = com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_path.length();
 	public static String binary_name = com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_path
 			.substring(lastSlash, StringLength);
+	
 
-	public static <IProgressMonitor> void rt_run() {
+	public static <IProgressMonitor> void rt_run(){
 		
 		try {
 			
@@ -44,6 +54,14 @@ public class Exec {
 				// save project files
 				PlatformUI.getWorkbench().saveAllEditors(false);
 				// build project
+				IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject();
+				System.out.println("test" + project);
+				try {
+					project.build(IncrementalProjectBuilder.FULL_BUILD, null);
+				} catch (CoreException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}			
 
 				out.println("*RHTOOLS --> Copy binary to remote hardware");
 				scp(session);
