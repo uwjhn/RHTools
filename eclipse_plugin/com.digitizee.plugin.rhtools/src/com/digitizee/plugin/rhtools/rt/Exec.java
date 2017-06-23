@@ -3,16 +3,12 @@ package com.digitizee.plugin.rhtools.rt;
 import com.jcraft.jsch.*;
 import java.io.*;
 import org.eclipse.ui.console.*;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
-import org.eclipse.core.resources.ResourcesPlugin;
-
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.jface.viewers.IStructuredSelection;
 
 public class Exec {
 
@@ -23,12 +19,11 @@ public class Exec {
 	static int StringLength = com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_path.length();
 	public static String binary_name = com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_path
 			.substring(lastSlash, StringLength);
-	
 
-	public static <IProgressMonitor> void rt_run(){
-		
+	public static <IProgressMonitor> void rt_run() {
+
 		try {
-			
+
 			MessageConsole myConsole = com.digitizee.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
 			out.println("\n*RHTOOLS -> Starting RHTool Task(s)");
@@ -52,16 +47,25 @@ public class Exec {
 			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_scp) {
 				out.println("*RHTOOLS --> Save & Build Project");
 				// save project files
-				PlatformUI.getWorkbench().saveAllEditors(false);
-				// build project
-				IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject();
-				System.out.println("test" + project);
+				PlatformUI.getWorkbench().saveAllEditors(true);
+				// get selected project to build it
+
 				try {
-					project.build(IncrementalProjectBuilder.FULL_BUILD, null);
-				} catch (CoreException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}			
+					IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+					if (window != null) {
+						IStructuredSelection selection = (IStructuredSelection) window.getSelectionService()
+								.getSelection();
+						Object firstElement = selection.getFirstElement();
+						if (firstElement instanceof IAdaptable) {
+							IProject selected_project = (IProject) ((IAdaptable) firstElement)
+									.getAdapter(IProject.class);
+							selected_project.build(IncrementalProjectBuilder.FULL_BUILD, null);
+						}
+					}
+
+				} catch (Exception e) {
+					out.println("*RHTOOLS BUILD-ERROR: " + e.toString());
+				}
 
 				out.println("*RHTOOLS --> Copy binary to remote hardware");
 				scp(session);
@@ -85,7 +89,8 @@ public class Exec {
 				ssh_exec(session, "sudo reboot");
 			}
 			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_custom) {
-				out.println("*RHTOOLS --> Custom command: " + com.digitizee.plugin.rhtools.handlers.ConfigHandler.custom_cmd);
+				out.println("*RHTOOLS --> Custom command: "
+						+ com.digitizee.plugin.rhtools.handlers.ConfigHandler.custom_cmd);
 				ssh_exec(session, com.digitizee.plugin.rhtools.handlers.ConfigHandler.custom_cmd);
 			}
 
@@ -95,7 +100,7 @@ public class Exec {
 		} catch (Exception e) {
 			MessageConsole myConsole = com.digitizee.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
-			out.println("*RHTOOLS ERROR: " + e.toString());
+			out.println("*RHTOOLS SSH/SCP-ERROR: " + e.toString());
 		}
 
 	}

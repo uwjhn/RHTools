@@ -11,7 +11,7 @@ public class ConfigHandler extends AbstractHandler {
 	public static int port = 22;
 	public static String user = "pi";
 	public static String passwd = "raspberry";
-	public static String binary_path = "/default";
+	public static String binary_path = "/../default";
 	public static String custom_cmd = "echo test";
 
 	public static boolean flag_kill = false;
