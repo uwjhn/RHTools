@@ -49,22 +49,20 @@ public class Exec {
 				// save project files
 				PlatformUI.getWorkbench().saveAllEditors(true);
 				// get selected project to build it
-
 				try {
-					IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+				    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 					if (window != null) {
-						IStructuredSelection selection = (IStructuredSelection) window.getSelectionService()
-								.getSelection();
-						Object firstElement = selection.getFirstElement();
-						if (firstElement instanceof IAdaptable) {
-							IProject selected_project = (IProject) ((IAdaptable) firstElement)
-									.getAdapter(IProject.class);
-							selected_project.build(IncrementalProjectBuilder.FULL_BUILD, null);
-						}
+						IStructuredSelection selection = (IStructuredSelection) window.getSelectionService().getSelection();
+				        Object firstElement = selection.getFirstElement();
+				        if (firstElement instanceof IAdaptable)
+				        {
+				            IProject selected_project = (IProject)((IAdaptable)firstElement).getAdapter(IProject.class);
+				            selected_project.build(IncrementalProjectBuilder.FULL_BUILD, null);
+				        }
 					}
 
 				} catch (Exception e) {
-					out.println("*RHTOOLS BUILD-ERROR: " + e.toString());
+					out.println("*RHTOOLS BUILD-ERROR: " + e.toString() + "(Workaround: Select Project Root)");
 				}
 
 				out.println("*RHTOOLS --> Copy binary to remote hardware");
