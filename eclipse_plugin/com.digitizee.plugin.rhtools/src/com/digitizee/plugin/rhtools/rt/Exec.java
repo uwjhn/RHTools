@@ -8,11 +8,21 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.viewers.IStructuredSelection;
 
 public class Exec {
 
 	public static boolean output = true;
+	public static boolean now_tmp = false;
+	public static boolean flag_kill_tmp;
+	public static boolean flag_scp_tmp;
+	public static boolean flag_exec_tmp;
+	public static boolean flag_chmod_tmp;
 
 	// get binary name without path
 	static int lastSlash = (com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_path.lastIndexOf("/") + 1);
@@ -20,7 +30,35 @@ public class Exec {
 	public static String binary_name = com.digitizee.plugin.rhtools.handlers.ConfigHandler.binary_path
 			.substring(lastSlash, StringLength);
 
-	public static <IProgressMonitor> void rt_run() {
+	public static void rt_run() {
+
+		Job jobRun = new Job("RHTools") {
+			public IStatus run(IProgressMonitor monitor) {
+				// run
+				monitor.beginTask("Running RHTools", 100);
+
+				rt_exec();
+
+				monitor.done();
+
+				if (monitor.isCanceled()) {
+					return Status.CANCEL_STATUS;
+				} else {
+					return Status.OK_STATUS;
+				}
+
+			}
+		};
+
+		jobRun.schedule();
+
+	}
+
+	public final static void rt_exec() {
+
+		// *** Initialize progress monitor ***
+		NullProgressMonitor monitor = new NullProgressMonitor();
+		monitor.beginTask("Running RHTools", 100);
 
 		try {
 
@@ -40,65 +78,134 @@ public class Exec {
 			session.setPassword(com.digitizee.plugin.rhtools.handlers.ConfigHandler.passwd);
 			session.connect();
 
-			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_kill) {
+			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_kill_now
+					|| com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_custom_now
+					|| com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_reboot_now
+					|| com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_scp_now
+					|| com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_exec_now
+					|| com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_shutdown_now) {
+				now_tmp = true;
+
+				// store old config flags
+				flag_kill_tmp = com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_kill;
+				flag_scp_tmp = com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_scp;
+				flag_exec_tmp = com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_exec;
+				flag_chmod_tmp = com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_chmod;
+
+				// set all config flags to false and restore old config flags
+				// after finishing
+				com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_kill = false;
+				com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_scp = false;
+				com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_chmod = false;
+				com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_exec = false;
+			}
+
+			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_kill
+					|| com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_kill_now) {
 				out.println("*RHTOOLS --> Kill binary activities");
 				ssh_exec(session, "kill -9 $(pidof " + binary_name + ")");
+				// *** Check monitor ***
+				if (monitor.isCanceled())
+					return;
 			}
-			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_scp) {
+			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_scp
+					|| com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_scp_now) {
 				out.println("*RHTOOLS --> Save & Build Project");
 				// save project files
 				PlatformUI.getWorkbench().saveAllEditors(true);
 				// get selected project to build it
 				try {
-				    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+					IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 					if (window != null) {
-						IStructuredSelection selection = (IStructuredSelection) window.getSelectionService().getSelection();
-				        Object firstElement = selection.getFirstElement();
-				        if (firstElement instanceof IAdaptable)
-				        {
-				            IProject selected_project = (IProject)((IAdaptable)firstElement).getAdapter(IProject.class);
-				            selected_project.build(IncrementalProjectBuilder.FULL_BUILD, null);
-				        }
+						IStructuredSelection selection = (IStructuredSelection) window.getSelectionService()
+								.getSelection();
+						Object firstElement = selection.getFirstElement();
+						if (firstElement instanceof IAdaptable) {
+							IProject selected_project = (IProject) ((IAdaptable) firstElement)
+									.getAdapter(IProject.class);
+							selected_project.build(IncrementalProjectBuilder.FULL_BUILD, null);
+						}
 					}
 
 				} catch (Exception e) {
 					out.println("*RHTOOLS BUILD-ERROR: " + e.toString() + "(Workaround: Select Project Root)");
 				}
 
+				// *** Check monitor ***
+				if (monitor.isCanceled())
+					return;
 				out.println("*RHTOOLS --> Copy binary to remote hardware");
 				scp(session);
 			}
 			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_chmod) {
 				out.println("*RHTOOLS --> Make binary executeable");
 				ssh_exec(session, "chmod +x " + binary_name);
+				// *** Check monitor ***
+				if (monitor.isCanceled())
+					return;
 			}
-			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_exec) {
+			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_exec
+					|| com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_exec_now) {
 				out.println("*RHTOOLS --> Run binary");
 				output = false; // avoids hanging the IDE
 				ssh_exec(session, "nohup ./" + binary_name);
 				output = true;
+				// *** Check monitor ***
+				if (monitor.isCanceled())
+					return;
 			}
-			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_shutdown) {
+			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_shutdown_now) {
 				out.println("*RHTOOLS --> Shutdown device");
 				ssh_exec(session, "sudo shutdown -h now");
+				// *** Check monitor ***
+				if (monitor.isCanceled())
+					return;
 			}
-			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_reboot) {
+			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_reboot_now) {
 				out.println("*RHTOOLS --> Reboot device");
 				ssh_exec(session, "sudo reboot");
+				// *** Check monitor ***
+				if (monitor.isCanceled())
+					return;
 			}
-			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_custom) {
+			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_custom_now) {
 				out.println("*RHTOOLS --> Custom command: "
 						+ com.digitizee.plugin.rhtools.handlers.ConfigHandler.custom_cmd);
 				ssh_exec(session, com.digitizee.plugin.rhtools.handlers.ConfigHandler.custom_cmd);
+				// *** Check monitor ***
+				if (monitor.isCanceled())
+					return;
 			}
 
 			out.println("*RHTOOLS -> RHTool Task(s) done.");
 			session.disconnect();
 
+			// *** Close monitor ***
+			monitor.done();
+
 		} catch (Exception e) {
 			MessageConsole myConsole = com.digitizee.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
 			out.println("*RHTOOLS SSH/SCP-ERROR: " + e.toString());
+		}
+
+		// reset "now"-flags
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_kill_now = false;
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_scp_now = false;
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_exec_now = false;
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_custom_now = false;
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_shutdown_now = false;
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_reboot_now = false;
+
+		// restore config flags if neccesarry
+		if (now_tmp) {
+			// restore old config flags
+			com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_kill = flag_kill_tmp;
+			com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_scp = flag_scp_tmp;
+			com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_exec = flag_exec_tmp;
+			com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_chmod = flag_chmod_tmp;
+
+			now_tmp = false;
 		}
 
 	}

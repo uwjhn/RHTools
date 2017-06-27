@@ -3,7 +3,7 @@
    <description name="RHToolsUpdateSite" url="http://rhtools.digitizee.com/updatesite/">
       RHToolsUpdateSite
    </description>
-   <feature url="features/com.digitizee.plugin.rhtools.features_0.0.3.201706231349.jar" id="com.digitizee.plugin.rhtools.features" version="0.0.3.201706231349">
+   <feature url="features/com.digitizee.plugin.rhtools.features_0.0.4.201706271459.jar" id="com.digitizee.plugin.rhtools.features" version="0.0.4.201706271459">
       <category name="RHTools"/>
    </feature>
    <category-def name="RHTools" label="RHTools">

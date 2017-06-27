@@ -18,9 +18,14 @@ public class ConfigHandler extends AbstractHandler {
 	public static boolean flag_scp = true;
 	public static boolean flag_chmod = false;
 	public static boolean flag_exec = true;
-	public static boolean flag_shutdown = false; // always false in config
-	public static boolean flag_reboot = false; // always false in config
-	public static boolean flag_custom = false; // always false in config
+	
+	public static boolean flag_kill_now = false;
+	public static boolean flag_scp_now = false;
+	public static boolean flag_exec_now = false;
+	public static boolean flag_custom_now = false; 
+	public static boolean flag_shutdown_now = false; 
+	public static boolean flag_reboot_now = false; 
+
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
