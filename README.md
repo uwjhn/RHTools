@@ -17,7 +17,7 @@ The plugin can be used via two icons, a menu or shortkeys.
 #### Menu and Icons
 * The left icon (see red rectangle) is used to run RHTools like it is configured.
 * The right icon is used to configure RHTools.  
-* In addition a menu can be used to operat RHTools (yellow rectangle)  
+* In addition, a menu can be used to operate RHTools (yellow rectangle)  
 ![RHTools Bar](https://github.com/uwlau/RHTools/blob/master/help/bar.png?raw=true)
 
 #### Shortkeys
@@ -55,6 +55,6 @@ A progress bar shows if the RHTools currently runs a command.
 
 
 ## Shell-Scripts
-The basic shell scipts can be used with unix terminal.
+The basic shell scripts can be used with UNIX terminal.
 ### Use
 `./srciptname.sh config-name.cfg` 
