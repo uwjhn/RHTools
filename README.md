@@ -2,15 +2,13 @@
 Remote Hardware Tools [RHTools v0.004a]
 
 ## Eclipse Plugin
-The RHTools Eclipse Plugin adds different functions to the Eclipse IDE to
+The RHTools eclipse plugin adds different functions to the eclipse IDE to
 interact with a remote hardware device, like a raspberry pi.
 
 ### Install
-The Plugin should be installed via 
-Help --> Install New Software 
-
-The following updatesite should be used.
-Eclipse Plugin updatesite  
+The Plugin should be installedin eclipse via  
+`Help --> Install New Software`   
+The following updatesite should be used.  
 `http://rhtools.digitizee.com/updatesite/` 
 
 ### Use
