@@ -29,6 +29,7 @@ The plugin can be used via two icons, a menu or shortkeys.
 #### Configuration
 The configurations must be edited for the remote hardware. The checkboxes are
 used to define if a specific task is done while running RHTools or not.  
+*Note: The selected project will be saved and build automatically when "copy new binary..." is selected.*    
 ![Config](https://github.com/uwlau/RHTools/blob/master/help/config.png?raw=true)
 
 #### Run RHTools 
