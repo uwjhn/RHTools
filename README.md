@@ -1,5 +1,5 @@
 # RHTools
-Remote Hardware Tools [RHTOOLS v0.004a]
+Remote Hardware Tools [RHTools v0.004a]
 
 ## Eclipse Plugin
 The RHTools Eclipse Plugin adds different functions to the Eclipse IDE to
@@ -23,9 +23,9 @@ The plugin can be used via two icons, a menu or shortkeys.
 ![RHTools Bar](https://github.com/uwlau/RHTools/blob/master/help/bar.png?raw=true)
 
 #### Shortkeys
-* Run RHTools: Ctrl + 6 
+* Run RHTools: Ctrl + 6  
 ![Run Shortkey](https://github.com/uwlau/RHTools/blob/master/help/shortkey_exec.png?raw=true)
-* Open Configurations: Ctrl + 7 
+* Open Configurations: Ctrl + 7  
 ![Config Shortkey](https://github.com/uwlau/RHTools/blob/master/help/shortkey_config.png?raw=true)
 
 #### Configuration
@@ -38,7 +38,7 @@ Running RHTools means that up to four tasks (as configured in the configurations
 are done automatically and step by step.
 
 #### Other Functions
-Other functions, like shutting down the device can be used via the menu.
+Other functions, like shutting down the device can be used via the menu.  
 ![Menu](https://github.com/uwlau/RHTools/blob/master/help/menu.png?raw=true)
 
 #### Custom Command
