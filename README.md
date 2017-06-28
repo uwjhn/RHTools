@@ -10,7 +10,7 @@ The Plugin should be installed via
 Help --> Install New Software 
 
 The following updatesite should be used.
-Eclipse Plugin updatesite
+Eclipse Plugin updatesite  
 http://rhtools.digitizee.com/updatesite/
 
 ### Use
@@ -19,6 +19,7 @@ The plugin can be used via two icons, a menu or shortkeys.
 #### Menu and Icons
 * The left icon (see red rectangle) is used to run RH Tools like it is configured.
 * The right icon is used to configure RH Tools.
+![RHTools Bar](https://github.com/uwlau/RHTools/blob/master/help/bar.png?raw=true)
 
 #### Shortkeys
 * Run RH Tools: Ctrl + 6
