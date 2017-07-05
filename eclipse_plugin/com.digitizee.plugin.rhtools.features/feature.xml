@@ -2,7 +2,7 @@
 <feature
       id="com.digitizee.plugin.rhtools.features"
       label="RHTools"
-      version="0.0.4.qualifier"
+      version="0.0.5.qualifier"
       provider-name="digitizee"
       plugin="com.digitizee.plugin.rhtools">
 
