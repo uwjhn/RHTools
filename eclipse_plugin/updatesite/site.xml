@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.digitizee.plugin.rhtools.features_0.0.5.201707051611.jar" id="com.digitizee.plugin.rhtools.features" version="0.0.5.201707051611">
+      <category name="RHTools"/>
+   </feature>
+   <category-def name="RHTools" label="RHTools">
+      <description>
+         Remote Hardware Tools
+      </description>
+   </category-def>
+</site>
