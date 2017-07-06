@@ -1,5 +1,5 @@
 # RHTools
-Remote Hardware Tools [RHTools v0.004a]
+Remote Hardware Tools [RHTools v0.1.0]
 
 ## Eclipse Plugin
 The RHTools eclipse plugin adds different functions to the eclipse IDE to

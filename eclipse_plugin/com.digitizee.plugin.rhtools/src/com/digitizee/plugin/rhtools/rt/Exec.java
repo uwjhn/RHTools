@@ -64,7 +64,7 @@ public class Exec {
 
 			MessageConsole myConsole = com.digitizee.plugin.rhtools.rt.Console_out.findConsole("RHTools*Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
-			out.println("\n*RHTOOLS -> Starting RHTool Task(s)");
+			out.println("\n*RHTOOLS -> Starting RHTools Task(s)");
 
 			JSch jsch = new JSch();
 
@@ -177,7 +177,7 @@ public class Exec {
 					return;
 			}
 
-			out.println("*RHTOOLS -> RHTool Task(s) done.");
+			out.println("*RHTOOLS -> RHTools Task(s) done.");
 			session.disconnect();
 
 			// *** Close monitor ***

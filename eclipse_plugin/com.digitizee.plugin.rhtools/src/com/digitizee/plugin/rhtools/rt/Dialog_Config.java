@@ -167,7 +167,7 @@ public class Dialog_Config extends TitleAreaDialog {
 
 	private void createKillFlagbox(Composite container) {
 		Label lbtpath = new Label(container, SWT.NONE);
-		lbtpath.setText("Kill old binary activities while running script:");
+		lbtpath.setText("Kill old binary activities while running RHTools:");
 
 		GridData datapath = new GridData();
 		datapath.grabExcessHorizontalSpace = true;
@@ -184,7 +184,7 @@ public class Dialog_Config extends TitleAreaDialog {
 	
 	private void createSCPFlagbox(Composite container) {
 		Label lbtpath = new Label(container, SWT.NONE);
-		lbtpath.setText("Copy new binary while running script:");
+		lbtpath.setText("Copy new binary while running RHTools:");
 
 		GridData datapath = new GridData();
 		datapath.grabExcessHorizontalSpace = true;
@@ -201,7 +201,7 @@ public class Dialog_Config extends TitleAreaDialog {
 	
 	private void createChmodFlagbox(Composite container) {
 		Label lbtpath = new Label(container, SWT.NONE);
-		lbtpath.setText("Make binary executable while running script:");
+		lbtpath.setText("Make binary executable while running RHTools:");
 
 		GridData datapath = new GridData();
 		datapath.grabExcessHorizontalSpace = true;
@@ -218,7 +218,7 @@ public class Dialog_Config extends TitleAreaDialog {
 	
 	private void createExecFlagbox(Composite container) {
 		Label lbtpath = new Label(container, SWT.NONE);
-		lbtpath.setText("Execute binary while running script:");
+		lbtpath.setText("Execute binary while running RHTools:");
 
 		GridData datapath = new GridData();
 		datapath.grabExcessHorizontalSpace = true;
