@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="com.digitizee.plugin.rhtools.features"
+      id="com.digitizee.feature.rhtools"
       label="RHTools"
-      version="0.0.5.qualifier"
-      provider-name="digitizee"
-      plugin="com.digitizee.plugin.rhtools">
+      version="0.1.0.qualifier"
+      provider-name="digitizee">
 
    <description url="http://rhtools.digitizee.com">
-      Remote Hardware Tools
+      RHTools
    </description>
 
-   <copyright url="http://www.digitziee.com">
+   <copyright url="http://rhtools.digitizee.com">
       © digitizee 2017
    </copyright>
 
-   <license url="http://www.digitziee.com">
+   <license url="http://rhtools.digitizee.com">
       n.a.
    </license>
 
    <url>
-      <update label="RHTools Update Site" url="http://rhtools.digitizee.com/updatesite"/>
-      <discovery label="http://www.digitziee.com" url="http://www.digitziee.com"/>
+      <discovery label="http://rhtools.digitizee.com" url="http://rhtools.digitizee.com"/>
    </url>
 
    <requires>
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.ui.console" version="3.6.201" match="greaterOrEqual"/>
       <import plugin="com.jcraft.jsch" version="0.1.54" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.core.runtime" version="3.12.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.resources" version="3.11.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime" version="3.12.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

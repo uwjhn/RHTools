@@ -206,8 +206,5 @@
          </toolbar>
       </menuContribution>
    </extension>
-   <extension
-         point="org.eclipse.core.runtime.adapters">
-   </extension>
 
 </plugin>

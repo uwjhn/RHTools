@@ -9,7 +9,8 @@ interact with a remote hardware device, like a raspberry pi.
 The Plugin should be installed in eclipse via  
 `Help --> Install New Software...`   
 The following updatesite should be used.  
-`http://rhtools.digitizee.com/updatesite/` 
+`http://rhtools.digitizee.com/updatesite/`   
+*NOTE: The warning regarding unsigned content needs to be skipped*   
 
 ### Use
 The plugin can be used via two icons, a menu or shortkeys.
