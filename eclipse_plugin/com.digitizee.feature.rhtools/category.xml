@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
+   <feature url="features/com.digitizee.feature.rhtools_0.1.1.qualifier.jar" id="com.digitizee.feature.rhtools" version="0.1.1.qualifier">
+      <category name="RHTools"/>
+   </feature>
    <category-def name="RHTools" label="RHTools">
       <description>
          Remote Hardware Tools

@@ -9,7 +9,7 @@ public class KillNowHandler extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		
-		com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_exec_now = true;
+		com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_kill_now = true;
 		
 		// run
 		com.digitizee.plugin.rhtools.rt.Exec.rt_run();
