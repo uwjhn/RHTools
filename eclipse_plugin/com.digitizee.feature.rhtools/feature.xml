@@ -2,7 +2,7 @@
 <feature
       id="com.digitizee.feature.rhtools"
       label="RHTools"
-      version="0.1.1.qualifier"
+      version="0.1.2.qualifier"
       provider-name="digitizee">
 
    <description url="http://rhtools.digitizee.com">

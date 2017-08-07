@@ -98,6 +98,14 @@ public class Exec {
 				com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_scp = false;
 				com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_chmod = false;
 				com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_exec = false;
+				
+				
+				// always kill and chmod when using SCP now
+				if(com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_scp_now == true) 
+				{
+					com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_kill_now = true;
+					com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_chmod = true;
+				}
 			}
 
 			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_kill
@@ -136,6 +144,7 @@ public class Exec {
 					return;
 				out.println("*RHTOOLS --> Copy binary to remote hardware");
 				scp(session);
+				
 			}
 			if (com.digitizee.plugin.rhtools.handlers.ConfigHandler.flag_chmod) {
 				out.println("*RHTOOLS --> Make binary executeable");
