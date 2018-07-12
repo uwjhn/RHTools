@@ -7,17 +7,17 @@ import org.eclipse.jface.window.Window;
 
 public class ConfigHandler extends AbstractHandler {
 
-	public static String host = "192.168.1.121";
+	public static String host = "172.22.166.135";
 	public static int port = 22;
 	public static String user = "pi";
-	public static String passwd = "raspberry";
-	public static String binary_path = "/../default";
+	public static String passwd = "DAEbot";
+	public static String binary_path = "/home/uwlau/DAEbot/Devices/Reflective Operator/Simple_C_Reflective_Operator/rPI_Cross/Simple_C_Reflective_Operator";
 	public static String custom_cmd = "echo test";
 
-	public static boolean flag_kill = false;
+	public static boolean flag_kill = true;
 	public static boolean flag_scp = true;
-	public static boolean flag_chmod = false;
-	public static boolean flag_exec = true;
+	public static boolean flag_chmod = true;
+	public static boolean flag_exec = false;
 	
 	public static boolean flag_kill_now = false;
 	public static boolean flag_scp_now = false;
